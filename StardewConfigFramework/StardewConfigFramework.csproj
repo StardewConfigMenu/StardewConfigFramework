@@ -11,7 +11,7 @@
     <PackageVersion>2.0.0</PackageVersion>
     <Authors>Juice805</Authors>
     <Description>A Unified Mod Options Page For Modders &amp; Users. Keep all your mod settings in one place!</Description>
-    <ReleaseVersion>0.9.1</ReleaseVersion>
+    <ReleaseVersion>2.0.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Juice805.StardewConfigFramework</PackageId>
     <PackageIconUrl>https://github.com/Juice805/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</PackageIconUrl>
@@ -21,6 +21,7 @@
     <Summary>A Unified Mod Options Page For Modders &amp; Users. Keep all your mod settings in one place!</Summary>
     <PackageTags>Stardew Valley Config Menu Options</PackageTags>
     <Title>StardewConfigFramework</Title>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
