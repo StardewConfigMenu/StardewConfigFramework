@@ -21,5 +21,4 @@ namespace StardewConfigFramework {
 	public enum OptionActionType {
 		OK, SET, CLEAR, DONE, GIFT
 	}
-
 }

@@ -8,7 +8,7 @@
     <RootNamespace>StardewConfigFramework</RootNamespace>
     <AssemblyName>StardewConfigFramework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <Authors>Juice805</Authors>
     <Description>A Unified Mod Options Page For Modders &amp; Users. Keep all your mod settings in one place!</Description>
     <ReleaseVersion>0.9.1</ReleaseVersion>
