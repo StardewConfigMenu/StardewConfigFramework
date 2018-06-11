@@ -49,7 +49,7 @@ For a walkthrough of how to use the framework in your mods [check out the Wiki](
 
 ## Users
 
-This repo is for modders to enable StardewConfigMenu support, users generally do not need to worry themselves with the contents of this repo.
+This repo is for modders to enable StardewConfigMenu support, users generally do not need to worry themselves with the contents of this repo. You may be looking for the [StardewConfigMenu](https://github.com/Juice805/StardewConfigMenu) mod?
  
 ### Credit
 
