@@ -1,7 +1,5 @@
-# StardewConfigMenu
+# StardewConfigFramework
 Ever want to add a settings menu to your Stardew Valley mod, but didn’t want to go through the hassle of building one from scratch? Well, you’re in luck! I did it for you!
-
-![StardewConfigFramework Menu](/docs/prettymenu.png)
 
 ## Contents
 
@@ -41,18 +39,17 @@ Feel free to submit pull requests. This is my first C# project so it is quite sl
 
 For a walkthrough of how to use the framework in your mods [check out the Wiki](https://github.com/Juice805/StardewConfigFramework/wiki)
 
-
-## Users
-
 ### Requirements
-
- __NOTE:__ This is mod is used as a utility for other mods and on it's own only adds an empty Settings page. Beside other mods which take advantage of the framework the requirements are as follows:
 
  - [SMAPI](https://github.com/Pathoschild/SMAPI/releases)
  
 ### Mods
 
  - None yet! [But you can be the first!](#modders)
+
+## Users
+
+This repo is for modders to enable StardewConfigMenu support, users generally do not need to worry themselves with the contents of this repo.
  
 ### Credit
 
