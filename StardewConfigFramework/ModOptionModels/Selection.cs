@@ -7,19 +7,24 @@ namespace StardewConfigFramework.Options {
 		public delegate void Handler(string componentIdentifier, string selectionIdentifier);
 		public event Handler ValueDidChange;
 
-		public SelectionChoices Choices { get; private set; } = new SelectionChoices();
-		public Dictionary<String, String> HoverTextDictionary = null;
+		internal SelectionChoices _Choices { get; private set; } = new SelectionChoices();
 
-		public Selection(string identifier, string labelText, SelectionChoices choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
+		/// <summary>
+		/// Returns a Read Only copy of the choices collection
+		/// </summary>
+		/// <value>The choices.</value>
+		public IReadOnlyCollection<SelectionChoice> Choices => _Choices.AsList();
+
+		public Selection(string identifier, string labelText, IReadOnlyCollection<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
-				Choices = choices;
+				_Choices = new SelectionChoices(choices);
 				SelectionIndex = defaultSelection;
 			}
 		}
 
-		public Selection(string identifier, string labelText, SelectionChoices choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IReadOnlyCollection<SelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
-				Choices = choices;
+				_Choices = new SelectionChoices(choices);
 				if (choices.Count > 0)
 					SelectedIdentifier = defaultSelection;
 			}
@@ -27,9 +32,7 @@ namespace StardewConfigFramework.Options {
 
 		private int _SelectedIndex = 0;
 		public int SelectionIndex {
-			get {
-				return _SelectedIndex;
-			}
+			get => _SelectedIndex;
 			set {
 				if (Choices.Count == 0 && value == 0) {
 				} else if (value >= Choices.Count || value < 0) {
@@ -38,78 +41,111 @@ namespace StardewConfigFramework.Options {
 
 				if (_SelectedIndex == value)
 					return;
+
 				_SelectedIndex = value;
 				ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
 			}
 		}
 
 		public string SelectedIdentifier {
-			get {
-				return Choices.IdentifierOf(_SelectedIndex);
-			}
+			get => _Choices[_SelectedIndex].Identifier;
 			set {
-				if (!Choices.Contains(value))
+				if (!_Choices.Contains(value))
 					throw new KeyNotFoundException("Identifier does not exist in Choices");
 
-				if (_SelectedIndex != Choices.IndexOf(value)) {
-					_SelectedIndex = Choices.IndexOf(value);
-					ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
-				}
+				int index = _Choices.IndexOf(value);
+				if (_SelectedIndex == index)
+					return;
+
+				_SelectedIndex = index;
+				ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
 			}
 		}
+
+		/// <summary>
+		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> at the specified index.
+		/// </summary>
+		/// <param name="index">Index.</param>
+		public SelectionChoice this[int index] => _Choices[index];
+
+		/// <summary>
+		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> with the specified identifier.
+		/// </summary>
+		/// <param name="identifier">Identifier.</param>
+		public SelectionChoice this[string identifier] => _Choices[identifier];
+
+		public void Insert(int index, SelectionChoice choice) {
+			_Choices.Insert(index, choice);
+		}
+
+		public void Add(SelectionChoice choice) {
+			_Choices.Add(choice);
+		}
+
+		public void Remove(string identifier) {
+			_Choices.Remove(identifier);
+		}
+
+		public bool Contains(string identifier) {
+			return _Choices.Contains(identifier);
+		}
+
+		/// <summary>
+		/// Index of the identifier
+		/// </summary>
+		/// <returns>The index of of the <paramref name="identifier"/>. Returns -1 if identifier does not exist in choices.</returns>
+		/// <param name="identifier">Identifier.</param>
+		public int IndexOf(string identifier) {
+			return _Choices.IndexOf(identifier);
+		}
+	}
+
+	public class SelectionChoice {
+		public SelectionChoice(string identifier, string label, string hoverText = null) {
+			Identifier = identifier;
+			Label = label;
+			HoverText = hoverText;
+		}
+		public readonly string Identifier;
+		public string Label;
+		public string HoverText;
 	}
 
 	/// <summary>
 	/// Contains the choices of a Selection
 	/// </summary>
-	public class SelectionChoices {
+	internal class SelectionChoices {
+		public SelectionChoices() { }
 
-		private OrderedDictionary dictionary = new OrderedDictionary();
+		public SelectionChoices(IReadOnlyCollection<SelectionChoice> choices) {
+			foreach (SelectionChoice choice in choices) {
+				Add(choice);
+			}
+		}
+
+		private readonly OrderedDictionary dictionary = new OrderedDictionary();
 		public int Count => dictionary.Count;
 
 		/// <summary>
-		/// Gets or sets the Label with the specified key.
+		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> at the specified index.
 		/// </summary>
-		/// <param name="key">Key.</param>
-		public string this[int key] {
-			get {
-				return dictionary[key] as string;
-			}
-			set {
-				dictionary[key] = value;
-			}
-		}
+		/// <param name="index">Index.</param>
+		public SelectionChoice this[int index] => dictionary[index] as SelectionChoice;
 
 		/// <summary>
-		/// Gets or sets the Label with the specified identifier.
+		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> with the specified identifier.
 		/// </summary>
 		/// <param name="identifier">Identifier.</param>
-		public string this[string identifier] {
-			get {
-				return dictionary[identifier] as string;
-			}
-			set {
-				dictionary[identifier] = value;
-			}
+		public SelectionChoice this[string identifier] => dictionary[identifier] as SelectionChoice;
+
+		public void Insert(int index, SelectionChoice choice) {
+			dictionary.Remove(choice.Identifier);
+			dictionary.Insert(index, choice.Identifier, choice);
 		}
 
-		public void Insert(int index, string identifier, string label) {
-			dictionary.Remove(identifier);
-			dictionary.Insert(index, identifier, label);
-		}
-
-		public void Add(string identifier, string label) {
-			dictionary.Remove(identifier);
-			dictionary.Add(identifier, label);
-		}
-
-		public void Replace(string identifier, string label) {
-			var index = IndexOf(identifier);
-			if (index != -1) {
-				dictionary.Remove(identifier);
-				dictionary.Insert(index, identifier, label);
-			} else
-				dictionary.Add(identifier, label);
+		public void Add(SelectionChoice choice) {
+			dictionary.Remove(choice.Identifier);
+			dictionary.Add(choice.Identifier, choice);
 		}
 
 		/// <summary>
@@ -124,61 +160,25 @@ namespace StardewConfigFramework.Options {
 			return dictionary.Contains(identifier);
 		}
 
-		public int IndexOfLabel(string label) {
-			return Labels.IndexOf(label);
-		}
-
-		public string IdentifierOfLabel(string label) {
-			return IdentifierOf(Labels.IndexOf(label));
-		}
-
 		/// <summary>
-		/// Gets the Index of the identifier.
+		/// Index of the identifier
 		/// </summary>
-		/// <returns>the index, or -1 if not found.</returns>
+		/// <returns>The index of of the <paramref name="identifier"/>. Returns -1 if identifier does not exist in choices.</returns>
 		/// <param name="identifier">Identifier.</param>
 		public int IndexOf(string identifier) {
-			return Identifiers.IndexOf(identifier);
-		}
-
-		public string IdentifierOf(int index) {
-			if (dictionary.Keys.Count == 0 || index < 0 || index >= dictionary.Keys.Count)
-				return string.Empty;
-			String[] myKeys = new String[dictionary.Keys.Count];
-			dictionary.Keys.CopyTo(myKeys, 0);
-			return myKeys[index];
-		}
-
-		public string LabelOf(int index) {
-			return this[index];
-		}
-
-		public string LabelOf(string identifier) {
-			return this[identifier];
-		}
-
-		public IList<string> Identifiers {
-			get {
-				if (dictionary.Keys.Count == 0)
-					return new List<string>();
-
-				String[] myKeys = new String[dictionary.Keys.Count];
-				dictionary.Keys.CopyTo(myKeys, 0);
-				var keys = new List<string>(myKeys);
-				return keys.AsReadOnly();
+			for (int i = 0; i < dictionary.Count; i++) {
+				if (dictionary[i] == dictionary[identifier])
+					return i;
 			}
+			return -1;
 		}
 
-		public IList<string> Labels {
-			get {
-				if (dictionary.Values.Count == 0)
-					return new List<string>();
-
-				String[] myValues = new String[dictionary.Values.Count];
-				dictionary.Values.CopyTo(myValues, 0);
-				var labels = new List<string>(myValues);
-				return labels.AsReadOnly();
+		public IReadOnlyCollection<SelectionChoice> AsList() {
+			List<SelectionChoice> list = new List<SelectionChoice>();
+			foreach (SelectionChoice choice in dictionary) {
+				list.Add(choice);
 			}
+			return list.AsReadOnly();
 		}
 	}
 }
