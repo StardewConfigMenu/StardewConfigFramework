@@ -97,6 +97,10 @@ namespace StardewConfigFramework.Options {
 		public int IndexOf(string identifier) {
 			return _Choices.IndexOf(identifier);
 		}
+
+		public IReadOnlyCollection<string> GetLabels() {
+			return _Choices.GetLabels();
+		}
 	}
 
 	public class SelectionChoice {

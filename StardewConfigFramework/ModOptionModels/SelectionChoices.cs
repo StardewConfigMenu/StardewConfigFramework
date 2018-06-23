@@ -71,5 +71,13 @@ namespace StardewConfigFramework.Options {
 			}
 			return list.AsReadOnly();
 		}
+
+		public IReadOnlyCollection<string> GetLabels() {
+			List<string> list = new List<string>();
+			foreach (SelectionChoice choice in dictionary) {
+				list.Add(choice.Label);
+			}
+			return list.AsReadOnly();
+		}
 	}
 }
