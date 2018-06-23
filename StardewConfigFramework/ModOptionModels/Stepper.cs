@@ -4,7 +4,15 @@ namespace StardewConfigFramework.Options {
 
 	public class Stepper: ModOption {
 		public delegate void Handler(string identifier, decimal currentValue);
+		public enum DisplayType {
+			NONE, PERCENT
+		}
+
 		public event Handler ValueDidChange;
+		readonly public DisplayType type;
+		readonly public decimal stepSize;
+		readonly public decimal max;
+		readonly public decimal min;
 
 		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = DisplayType.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
 			this.min = Math.Round(min, 3);
@@ -15,11 +23,6 @@ namespace StardewConfigFramework.Options {
 			var valid = CheckValidInput(Math.Round(defaultValue, 3));
 			this.Value = valid - ((valid - min) % stepSize);
 		}
-
-		readonly public decimal min;
-		readonly public decimal max;
-		readonly public decimal stepSize;
-		readonly public DisplayType type;
 
 		private decimal _Value;
 		public decimal Value {
@@ -56,10 +59,5 @@ namespace StardewConfigFramework.Options {
 
 			return input;
 		}
-
-	}
-
-	public enum DisplayType {
-		NONE, PERCENT
 	}
 }
