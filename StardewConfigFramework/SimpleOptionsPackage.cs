@@ -6,7 +6,7 @@ using System;
 namespace StardewConfigFramework {
 	public class SimpleOptionsPackage: IOptionsPackage {
 		public SimpleOptionsPackage(Mod mod) {
-			this.ModManifest = mod.ModManifest;
+			ModManifest = mod.ModManifest;
 		}
 
 		public IManifest ModManifest { get; private set; }

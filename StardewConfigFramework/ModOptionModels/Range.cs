@@ -11,11 +11,11 @@ namespace StardewConfigFramework.Options {
 		readonly public decimal Min;
 
 		public Range(string identifier, string label, decimal min, decimal max, decimal stepSize, decimal defaultSelection, bool showValue, bool enabled = true) : base(identifier, label, enabled) {
-			this.ShowValue = showValue;
-			this.StepSize = Math.Round(stepSize, 3);
-			this.Min = Math.Round(min, 3);
-			this.Max = Math.Round(max, 3);
-			this.Value = Math.Round(defaultSelection, 3);
+			ShowValue = showValue;
+			StepSize = Math.Round(stepSize, 3);
+			Min = Math.Round(min, 3);
+			Max = Math.Round(max, 3);
+			Value = Math.Round(defaultSelection, 3);
 		}
 
 		private decimal _value;
@@ -27,10 +27,10 @@ namespace StardewConfigFramework.Options {
 				var input = GetValidInput(Math.Round(value, 3));
 				int stepsAboveMin = (int) ((input - Min) / StepSize);
 				var newVal = (stepsAboveMin * StepSize) + Min;
-				if (newVal == this._value)
+				if (newVal == _value)
 					return;
-				this._value = newVal;
-				this.ValueDidChange?.Invoke(this.Identifier, this._value);
+				_value = newVal;
+				ValueDidChange?.Invoke(Identifier, _value);
 			}
 		}
 

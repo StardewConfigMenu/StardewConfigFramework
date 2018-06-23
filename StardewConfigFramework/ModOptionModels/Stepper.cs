@@ -14,14 +14,14 @@ namespace StardewConfigFramework.Options {
 		readonly public decimal Max;
 		readonly public decimal Min;
 
-		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = Type.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
-			this.Min = Math.Round(min, 3);
-			this.Max = Math.Round(max, 3);
-			this.StepSize = Math.Round(stepsize, 3);
-			this.Type = type;
+		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = DisplayType.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
+			Min = Math.Round(min, 3);
+			Max = Math.Round(max, 3);
+			StepSize = Math.Round(stepsize, 3);
+			Type = type;
 
 			var valid = CheckValidInput(Math.Round(defaultValue, 3));
-			this.Value = valid - ((valid - min) % StepSize);
+			Value = valid - ((valid - min) % StepSize);
 		}
 
 		private decimal _Value;
@@ -34,20 +34,20 @@ namespace StardewConfigFramework.Options {
 			set {
 				var valid = CheckValidInput(Math.Round(value, 3));
 				var newVal = (int) ((valid - Min) / StepSize) * StepSize + Min;
-				if (newVal == this._Value)
+				if (newVal == _Value)
 					return;
-				this._Value = newVal;
-				this.ValueDidChange?.Invoke(this.Identifier, this._Value);
+				_Value = newVal;
+				ValueDidChange?.Invoke(Identifier, _Value);
 			}
 		}
 
 
 		public void StepUp() {
-			this.Value = this.Value + this.StepSize;
+			Value = Value + StepSize;
 		}
 
 		public void StepDown() {
-			this.Value = this.Value - this.StepSize;
+			Value = Value - StepSize;
 		}
 
 		private decimal CheckValidInput(decimal input) {

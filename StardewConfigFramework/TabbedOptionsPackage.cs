@@ -6,7 +6,7 @@ using StardewModdingAPI;
 namespace StardewConfigFramework {
 	public class TabbedOptionsPackage: IOptionsPackage {
 		public TabbedOptionsPackage(Mod mod) {
-			this.ModManifest = mod.ModManifest;
+			ModManifest = mod.ModManifest;
 		}
 
 		public IManifest ModManifest { get; }

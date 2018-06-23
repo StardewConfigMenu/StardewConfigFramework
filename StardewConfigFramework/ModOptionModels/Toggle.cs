@@ -6,7 +6,7 @@ namespace StardewConfigFramework.Options {
 		public event Handler ValueDidChange;
 
 		public Toggle(string identifier, string labelText, bool isOn = true, bool enabled = true) : base(identifier, labelText, enabled) {
-			this.IsOn = isOn;
+			IsOn = isOn;
 		}
 
 		public bool IsOn {
@@ -17,15 +17,15 @@ namespace StardewConfigFramework.Options {
 				if (_isOn == value)
 					return;
 
-				this._isOn = value;
-				this.ValueDidChange?.Invoke(this.Identifier, this.IsOn);
+				_isOn = value;
+				ValueDidChange?.Invoke(Identifier, IsOn);
 			}
 		}
 
 		private bool _isOn;
 
 		public void Flip() {
-			this.IsOn = !this.IsOn;
+			IsOn = !IsOn;
 		}
 	}
 }

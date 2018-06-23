@@ -11,11 +11,11 @@ namespace StardewConfigFramework.Options {
 		public ActionType Type;
 
 		public Action(string identifier, string labelText, ActionType type, bool enabled = true) : base(identifier, labelText, enabled) {
-			this.Type = type;
+			Type = type;
 		}
 
 		public void Trigger() {
-			this.ActionWasTriggered?.Invoke(this.Identifier);
+			ActionWasTriggered?.Invoke(Identifier);
 		}
 	}
 }
