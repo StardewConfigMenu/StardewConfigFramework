@@ -64,6 +64,14 @@ namespace StardewConfigFramework.Options {
 			return -1;
 		}
 
+		public int IndexOfLabel(string label) {
+			for (int i = 0; i < dictionary.Count; i++) {
+				if (this[i].Label == label)
+					return i;
+			}
+			return -1;
+		}
+
 		public IReadOnlyList<SelectionChoice> AsList() {
 			List<SelectionChoice> list = new List<SelectionChoice>();
 			foreach (SelectionChoice choice in dictionary) {

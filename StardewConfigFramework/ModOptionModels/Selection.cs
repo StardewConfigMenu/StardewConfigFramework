@@ -46,8 +46,10 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
+		public SelectionChoice SelectedChoice => _Choices[_SelectedIndex];
+
 		public string SelectedIdentifier {
-			get => _Choices[_SelectedIndex].Identifier;
+			get => SelectedChoice.Identifier;
 			set {
 				if (!_Choices.Contains(value))
 					throw new KeyNotFoundException("Identifier does not exist in Choices");
@@ -96,6 +98,10 @@ namespace StardewConfigFramework.Options {
 		/// <param name="identifier">Identifier.</param>
 		public int IndexOf(string identifier) {
 			return _Choices.IndexOf(identifier);
+		}
+
+		public int IndexOfLabel(string label) {
+			return _Choices.IndexOfLabel(label);
 		}
 
 		public IReadOnlyList<string> GetLabels() {
