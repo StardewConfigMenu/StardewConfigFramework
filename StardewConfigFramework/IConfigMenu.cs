@@ -7,5 +7,4 @@ namespace StardewConfigFramework {
 		public static IConfigMenu Instance { get; protected set; }
 		public abstract void AddModOptions(IModOptions modOptions);
 	}
-
 }

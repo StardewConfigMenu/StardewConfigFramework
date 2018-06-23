@@ -1,7 +1,6 @@
 ﻿using StardewModdingAPI;
 using StardewConfigFramework.Options;
 using System.Collections.Generic;
-using System.IO;
 using System;
 
 namespace StardewConfigFramework {
