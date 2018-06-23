@@ -43,6 +43,5 @@ namespace StardewConfigFramework.Options {
 
 			return input;
 		}
-
 	}
 }
