@@ -9,19 +9,19 @@ namespace StardewConfigFramework.Options {
 		}
 
 		public event Handler ValueDidChange;
-		readonly public DisplayType type;
-		readonly public decimal stepSize;
-		readonly public decimal max;
-		readonly public decimal min;
+		readonly public DisplayType Type;
+		readonly public decimal StepSize;
+		readonly public decimal Max;
+		readonly public decimal Min;
 
-		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = DisplayType.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
-			this.min = Math.Round(min, 3);
-			this.max = Math.Round(max, 3);
-			this.stepSize = Math.Round(stepsize, 3);
-			this.type = type;
+		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = Type.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
+			this.Min = Math.Round(min, 3);
+			this.Max = Math.Round(max, 3);
+			this.StepSize = Math.Round(stepsize, 3);
+			this.Type = type;
 
 			var valid = CheckValidInput(Math.Round(defaultValue, 3));
-			this.Value = valid - ((valid - min) % stepSize);
+			this.Value = valid - ((valid - min) % StepSize);
 		}
 
 		private decimal _Value;
@@ -33,7 +33,7 @@ namespace StardewConfigFramework.Options {
 
 			set {
 				var valid = CheckValidInput(Math.Round(value, 3));
-				var newVal = (int) ((valid - min) / stepSize) * stepSize + min;
+				var newVal = (int) ((valid - Min) / StepSize) * StepSize + Min;
 				if (newVal == this._Value)
 					return;
 				this._Value = newVal;
@@ -43,19 +43,19 @@ namespace StardewConfigFramework.Options {
 
 
 		public void StepUp() {
-			this.Value = this.Value + this.stepSize;
+			this.Value = this.Value + this.StepSize;
 		}
 
 		public void StepDown() {
-			this.Value = this.Value - this.stepSize;
+			this.Value = this.Value - this.StepSize;
 		}
 
 		private decimal CheckValidInput(decimal input) {
-			if (input > max)
-				return max;
+			if (input > Max)
+				return Max;
 
-			if (input < min)
-				return min;
+			if (input < Min)
+				return Min;
 
 			return input;
 		}
