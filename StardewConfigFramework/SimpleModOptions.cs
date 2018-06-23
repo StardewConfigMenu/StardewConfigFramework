@@ -42,23 +42,7 @@ namespace StardewConfigFramework {
 		}
 
 		public ModOption RemoveOptionWithIdentifier(string identifier) {
-		[Obsolete("Saving/Loading settings within the framework is deprecated. Please use SMAPI methods for saving mod settings and use initial values when populating settings menu", true)]
-		public static SimpleModOptions LoadUserSettings(Mod mod) {
-			mod.Monitor.Log("[StardewConfigFramework] This mod is using deprecated saving & loading methods which will no longer work. Please alert the mod author");
-			return new SimpleModOptions(mod);
 			return Tab.RemoveOptionWithIdentifier(identifier);
 		}
-
-		[Obsolete("Saving/Loading settings within the framework is deprecated. Please use SMAPI methods for saving mod settings and use initial values when populating settings menu", true)]
-		public void SaveUserSettings() { }
-
-		[Obsolete("Saving/Loading settings within the framework is deprecated. Please use SMAPI methods for saving mod settings and use initial values when populating settings menu", true)]
-		public static SimpleModOptions LoadCharacterSettings(Mod mod, string farmerName) {
-			mod.Monitor.Log("[StardewConfigFramework] This mod is using deprecated saving & loading methods which will no longer work. Please alert the mod author");
-			return new SimpleModOptions(mod);
-		}
-
-		[Obsolete("Saving/Loading settings within the framework is deprecated. Please use SMAPI methods for saving mod settings and use initial values when populating settings menu", true)]
-		public void SaveCharacterSettings(string farmerName) { }
 	}
 }
