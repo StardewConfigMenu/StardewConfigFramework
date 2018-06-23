@@ -2,77 +2,67 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 
-namespace StardewConfigFramework {
-	public delegate void ModOptionSelectionHandler(string ComponentIdentifier, string selectionIdentifier);
+namespace StardewConfigFramework.Options {
+	public class Selection: ModOption {
+		public delegate void Handler(string componentIdentifier, string selectionIdentifier);
+		public event Handler ValueDidChange;
 
-	public class ModOptionSelection: ModOption {
-		public event ModOptionSelectionHandler ValueChanged;
+		public SelectionChoices Choices { get; private set; } = new SelectionChoices();
+		public Dictionary<String, String> HoverTextDictionary = null;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="T:StardewConfigFramework.ModOptionSelection"/> class.
-		/// </summary>
-		/// <param name="labelText">Label text.</param>
-		/// <param name="identifier">Identifier.</param>
-		/// <param name="choices">Choices. Must contain at least one choice.</param>
-		/// <param name="defaultSelection">Default selection.</param>
-		/// <param name="enabled">If set to <c>true</c> enabled.</param>
-		public ModOptionSelection(string identifier, string labelText, ModSelectionOptionChoices choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, SelectionChoices choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
-				this.Choices = choices;
-				this.SelectionIndex = defaultSelection;
+				Choices = choices;
+				SelectionIndex = defaultSelection;
 			}
-
 		}
 
-		public ModOptionSelection(string identifier, string labelText, ModSelectionOptionChoices choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, SelectionChoices choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
-				this.Choices = choices;
+				Choices = choices;
 				if (choices.Count > 0)
-					this.Selection = defaultSelection;
+					SelectedIdentifier = defaultSelection;
 			}
 		}
 
-		public ModSelectionOptionChoices Choices { get; private set; } = new ModSelectionOptionChoices();
-
-		public Dictionary<String, String> hoverTextDictionary = null;
-
-		private int _SelectionIndex = 0;
+		private int _SelectedIndex = 0;
 		public int SelectionIndex {
 			get {
-				return _SelectionIndex;
+				return _SelectedIndex;
 			}
 			set {
-				if (value > ((this.Choices.Count == 0) ? this.Choices.Count : this.Choices.Count - 1) || value < 0)
+				if (Choices.Count == 0 && value == 0) {
+				} else if (value >= Choices.Count || value < 0) {
 					throw new IndexOutOfRangeException("Selection is out of range of Choices");
-
-				if (_SelectionIndex != value) {
-					_SelectionIndex = value;
-					this.ValueChanged?.Invoke(this.identifier, this.Selection);
 				}
+
+				if (_SelectedIndex == value)
+					return;
+				_SelectedIndex = value;
+				ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
 			}
 		}
 
-		//public string Selection => Choices.IdentifierOfIndex(this._SelectionIndex);
-		public string Selection {
+		public string SelectedIdentifier {
 			get {
-				return Choices.IdentifierOf(this._SelectionIndex);
+				return Choices.IdentifierOf(_SelectedIndex);
 			}
 			set {
 				if (!Choices.Contains(value))
-					throw new IndexOutOfRangeException("Identifier does not exist in Choices");
+					throw new KeyNotFoundException("Identifier does not exist in Choices");
 
-				if (_SelectionIndex != Choices.IndexOf(value)) {
-					_SelectionIndex = Choices.IndexOf(value);
-					this.ValueChanged?.Invoke(this.identifier, this.Selection);
+				if (_SelectedIndex != Choices.IndexOf(value)) {
+					_SelectedIndex = Choices.IndexOf(value);
+					ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
 				}
 			}
 		}
 	}
 
 	/// <summary>
-	/// Contains the choices of a ModOptionSelection
+	/// Contains the choices of a Selection
 	/// </summary>
-	public class ModSelectionOptionChoices {
+	public class SelectionChoices {
 
 		private OrderedDictionary dictionary = new OrderedDictionary();
 		public int Count => dictionary.Count;
@@ -91,7 +81,7 @@ namespace StardewConfigFramework {
 		}
 
 		/// <summary>
-		/// Gets or sets the Labeel with the specified identifier.
+		/// Gets or sets the Label with the specified identifier.
 		/// </summary>
 		/// <param name="identifier">Identifier.</param>
 		public string this[string identifier] {
@@ -135,11 +125,11 @@ namespace StardewConfigFramework {
 		}
 
 		public int IndexOfLabel(string label) {
-			return this.Labels.IndexOf(label);
+			return Labels.IndexOf(label);
 		}
 
 		public string IdentifierOfLabel(string label) {
-			return this.IdentifierOf(this.Labels.IndexOf(label));
+			return IdentifierOf(Labels.IndexOf(label));
 		}
 
 		/// <summary>
@@ -148,7 +138,7 @@ namespace StardewConfigFramework {
 		/// <returns>the index, or -1 if not found.</returns>
 		/// <param name="identifier">Identifier.</param>
 		public int IndexOf(string identifier) {
-			return this.Identifiers.IndexOf(identifier);
+			return Identifiers.IndexOf(identifier);
 		}
 
 		public string IdentifierOf(int index) {
@@ -167,27 +157,28 @@ namespace StardewConfigFramework {
 			return this[identifier];
 		}
 
-		public List<string> Identifiers {
+		public IList<string> Identifiers {
 			get {
 				if (dictionary.Keys.Count == 0)
 					return new List<string>();
 
 				String[] myKeys = new String[dictionary.Keys.Count];
 				dictionary.Keys.CopyTo(myKeys, 0);
-				return new List<string>(myKeys);
+				var keys = new List<string>(myKeys);
+				return keys.AsReadOnly();
 			}
 		}
 
-		public List<string> Labels {
+		public IList<string> Labels {
 			get {
 				if (dictionary.Values.Count == 0)
 					return new List<string>();
 
 				String[] myValues = new String[dictionary.Values.Count];
 				dictionary.Values.CopyTo(myValues, 0);
-				return new List<string>(myValues);
+				var labels = new List<string>(myValues);
+				return labels.AsReadOnly();
 			}
 		}
 	}
-
 }

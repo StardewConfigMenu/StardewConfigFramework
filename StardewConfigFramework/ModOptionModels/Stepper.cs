@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace StardewConfigFramework {
-	public delegate void ModOptionStepperHandler(string identifier, decimal currentValue);
+namespace StardewConfigFramework.Options {
 
-	public class ModOptionStepper: ModOption {
-		public event ModOptionStepperHandler ValueChanged;
+	public class Stepper: ModOption {
+		public delegate void Handler(string identifier, decimal currentValue);
+		public event Handler ValueDidChange;
 
-		public ModOptionStepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = DisplayType.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepsize, decimal defaultValue, DisplayType type = DisplayType.NONE, bool enabled = true) : base(identifier, labelText, enabled) {
 			this.min = Math.Round(min, 3);
 			this.max = Math.Round(max, 3);
 			this.stepSize = Math.Round(stepsize, 3);
@@ -14,7 +14,6 @@ namespace StardewConfigFramework {
 
 			var valid = CheckValidInput(Math.Round(defaultValue, 3));
 			this.Value = valid - ((valid - min) % stepSize);
-
 		}
 
 		readonly public decimal min;
@@ -32,10 +31,10 @@ namespace StardewConfigFramework {
 			set {
 				var valid = CheckValidInput(Math.Round(value, 3));
 				var newVal = (int) ((valid - min) / stepSize) * stepSize + min;
-				if (newVal != this._Value) {
-					this._Value = newVal;
-					this.ValueChanged?.Invoke(this.identifier, this._Value);
-				}
+				if (newVal == this._Value)
+					return;
+				this._Value = newVal;
+				this.ValueDidChange?.Invoke(this.Identifier, this._Value);
 			}
 		}
 
