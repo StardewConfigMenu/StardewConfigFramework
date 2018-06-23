@@ -4,13 +4,13 @@ using StardewConfigFramework.Options;
 using StardewModdingAPI;
 
 namespace StardewConfigFramework {
-	public class ModOptionsTab {
-		public ModOptionsTab(string label) {
+	public class OptionsTab {
+		public OptionsTab(string label) {
 			Label = label;
 		}
 
 		public string Label;
-		public IList<ModOption> OptionList => _OptionList.AsReadOnly();
+		public IReadOnlyCollection<ModOption> OptionList => _OptionList.AsReadOnly();
 		internal List<ModOption> _OptionList = new List<ModOption>();
 
 		public T GetOptionWithIdentifier<T>(string identifier) where T : ModOption {

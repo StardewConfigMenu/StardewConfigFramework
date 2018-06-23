@@ -5,6 +5,6 @@ namespace StardewConfigFramework {
 
 	public abstract class IConfigMenu {
 		public static IConfigMenu Instance { get; protected set; }
-		public abstract void AddModOptions(IModOptions modOptions);
+		public abstract void AddModOptions(IOptionsPackage modOptions);
 	}
 }

@@ -2,9 +2,9 @@ using StardewModdingAPI;
 using System.Collections.Generic;
 
 namespace StardewConfigFramework {
-	public interface IModOptions {
+	public interface IOptionsPackage {
 		IManifest ModManifest { get; }
-		IList<ModOptionsTab> Tabs { get; }
+		IList<OptionsTab> Tabs { get; }
 		int TabCount { get; }
 	}
 }

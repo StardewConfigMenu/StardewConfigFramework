@@ -4,16 +4,16 @@ using System.Collections.Generic;
 using System;
 
 namespace StardewConfigFramework {
-	public class SimpleModOptions: IModOptions {
-		public SimpleModOptions(Mod mod) {
+	public class SimpleOptionsPackage: IOptionsPackage {
+		public SimpleOptionsPackage(Mod mod) {
 			this.ModManifest = mod.ModManifest;
 		}
 
 		public IManifest ModManifest { get; private set; }
-		public IList<ModOptionsTab> Tabs => _Tabs.AsReadOnly();
-		private List<ModOptionsTab> _Tabs => new List<ModOptionsTab> { Tab };
-		public IList<ModOption> OptionList => Tab.OptionList;
-		private ModOptionsTab Tab = new ModOptionsTab("");
+		public IList<OptionsTab> Tabs => _Tabs.AsReadOnly();
+		private List<OptionsTab> _Tabs => new List<OptionsTab> { Tab };
+		public IReadOnlyCollection<ModOption> OptionList => Tab.OptionList;
+		private OptionsTab Tab = new OptionsTab("");
 		public int TabCount { get; } = 1;
 
 		public T GetOptionWithIdentifier<T>(string identifier) where T : ModOption {
