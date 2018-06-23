@@ -12,7 +12,7 @@ namespace StardewConfigFramework {
 		public IManifest ModManifest { get; private set; }
 		public IList<OptionsTab> Tabs => _Tabs.AsReadOnly();
 		private List<OptionsTab> _Tabs => new List<OptionsTab> { Tab };
-		public IReadOnlyCollection<ModOption> OptionList => Tab.OptionList;
+		public IReadOnlyList<ModOption> OptionList => Tab.OptionList;
 		private OptionsTab Tab = new OptionsTab("");
 		public int TabCount { get; } = 1;
 

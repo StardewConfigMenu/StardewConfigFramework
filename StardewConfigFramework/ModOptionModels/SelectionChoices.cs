@@ -8,7 +8,7 @@ namespace StardewConfigFramework.Options {
 	internal class SelectionChoices {
 		public SelectionChoices() { }
 
-		public SelectionChoices(IReadOnlyCollection<SelectionChoice> choices) {
+		public SelectionChoices(IReadOnlyList<SelectionChoice> choices) {
 			foreach (SelectionChoice choice in choices) {
 				Add(choice);
 			}
@@ -64,7 +64,7 @@ namespace StardewConfigFramework.Options {
 			return -1;
 		}
 
-		public IReadOnlyCollection<SelectionChoice> AsList() {
+		public IReadOnlyList<SelectionChoice> AsList() {
 			List<SelectionChoice> list = new List<SelectionChoice>();
 			foreach (SelectionChoice choice in dictionary) {
 				list.Add(choice);
@@ -72,7 +72,7 @@ namespace StardewConfigFramework.Options {
 			return list.AsReadOnly();
 		}
 
-		public IReadOnlyCollection<string> GetLabels() {
+		public IReadOnlyList<string> GetLabels() {
 			List<string> list = new List<string>();
 			foreach (SelectionChoice choice in dictionary) {
 				list.Add(choice.Label);

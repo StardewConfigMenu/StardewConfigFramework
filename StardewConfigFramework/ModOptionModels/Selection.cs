@@ -12,16 +12,16 @@ namespace StardewConfigFramework.Options {
 		/// Returns a Read Only copy of the choices collection
 		/// </summary>
 		/// <value>The choices.</value>
-		public IReadOnlyCollection<SelectionChoice> Choices => _Choices.AsList();
+		public IReadOnlyList<SelectionChoice> Choices => _Choices.AsList();
 
-		public Selection(string identifier, string labelText, IReadOnlyCollection<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IReadOnlyList<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
 				_Choices = new SelectionChoices(choices);
 				SelectionIndex = defaultSelection;
 			}
 		}
 
-		public Selection(string identifier, string labelText, IReadOnlyCollection<SelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IReadOnlyList<SelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
 				_Choices = new SelectionChoices(choices);
 				if (choices.Count > 0)
@@ -98,7 +98,7 @@ namespace StardewConfigFramework.Options {
 			return _Choices.IndexOf(identifier);
 		}
 
-		public IReadOnlyCollection<string> GetLabels() {
+		public IReadOnlyList<string> GetLabels() {
 			return _Choices.GetLabels();
 		}
 	}

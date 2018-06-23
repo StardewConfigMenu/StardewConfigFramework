@@ -10,7 +10,7 @@ namespace StardewConfigFramework {
 		}
 
 		public string Label;
-		public IReadOnlyCollection<ModOption> OptionList => _OptionList.AsReadOnly();
+		public IReadOnlyList<ModOption> OptionList => _OptionList.AsReadOnly();
 		internal List<ModOption> _OptionList = new List<ModOption>();
 
 		public T GetOptionWithIdentifier<T>(string identifier) where T : ModOption {
