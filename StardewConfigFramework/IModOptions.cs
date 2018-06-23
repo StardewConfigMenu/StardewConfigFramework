@@ -6,7 +6,7 @@ using System;
 namespace StardewConfigFramework {
 	public interface IModOptions {
 		IManifest ModManifest { get; }
+		IList<ModOptionsTab> Tabs { get; }
 		int TabCount { get; }
-		IList<ModOption> GetOptionListForTab(int optionIndex);
 	}
 }

@@ -56,6 +56,7 @@
     <Compile Include="IModOptions.cs" />
     <Compile Include="SimpleModOptions.cs" />
     <Compile Include="TabbedModOptions.cs" />
+    <Compile Include="ModOptionsTab.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
