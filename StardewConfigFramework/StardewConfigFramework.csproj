@@ -53,10 +53,10 @@
     <Compile Include="ModOptionModels\Toggle.cs" />
     <Compile Include="ModOptionModels\ModOption.cs" />
     <Compile Include="ModOptionModels\Action.cs" />
-    <Compile Include="IModOptions.cs" />
-    <Compile Include="SimpleModOptions.cs" />
-    <Compile Include="TabbedModOptions.cs" />
-    <Compile Include="ModOptionsTab.cs" />
+    <Compile Include="IOptionsPackage.cs" />
+    <Compile Include="SimpleOptionsPackage.cs" />
+    <Compile Include="TabbedOptionsPackage.cs" />
+    <Compile Include="OptionsTab.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

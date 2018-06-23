@@ -4,14 +4,14 @@ using StardewConfigFramework.Options;
 using StardewModdingAPI;
 
 namespace StardewConfigFramework {
-	public class TabbedModOptions: IModOptions {
-		public TabbedModOptions(Mod mod) {
+	public class TabbedOptionsPackage: IOptionsPackage {
+		public TabbedOptionsPackage(Mod mod) {
 			this.ModManifest = mod.ModManifest;
 		}
 
 		public IManifest ModManifest { get; }
-		public IList<ModOptionsTab> Tabs => _Tabs;
-		private List<ModOptionsTab> _Tabs = new List<ModOptionsTab>();
+		public IList<OptionsTab> Tabs => _Tabs;
+		private List<OptionsTab> _Tabs = new List<OptionsTab>();
 		public int TabCount => _Tabs.Count;
 	}
 }
