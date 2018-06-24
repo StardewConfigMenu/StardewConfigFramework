@@ -2,7 +2,7 @@
 
 namespace StardewConfigFramework.Options {
 	public class Range: ModOption {
-		public delegate void Handler(Range range, decimal currentValue);
+		public delegate void Handler(Range range);
 
 		public event Handler ValueDidChange;
 		readonly public bool ShowValue;
@@ -30,7 +30,7 @@ namespace StardewConfigFramework.Options {
 				if (newVal == _value)
 					return;
 				_value = newVal;
-				ValueDidChange?.Invoke(this, _value);
+				ValueDidChange?.Invoke(this);
 			}
 		}
 
