@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 
 namespace StardewConfigFramework.Options {
 
 	public class Stepper: ModOption {
-		public delegate void Handler(string identifier, decimal currentValue);
+		public delegate void Handler(Stepper stepper, decimal currentValue);
 		public enum DisplayType {
 			NONE, PERCENT
 		}
@@ -37,7 +37,7 @@ namespace StardewConfigFramework.Options {
 				if (newVal == _Value)
 					return;
 				_Value = newVal;
-				ValueDidChange?.Invoke(Identifier, _Value);
+				ValueDidChange?.Invoke(this, _Value);
 			}
 		}
 

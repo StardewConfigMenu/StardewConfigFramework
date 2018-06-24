@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace StardewConfigFramework.Options {
 	public class Selection: ModOption {
-		public delegate void Handler(string componentIdentifier, string selectionIdentifier);
-		public event Handler ValueDidChange;
+		public delegate void Handler(Selection selection, string selectedIdentifier);
+		public event Handler SelectionDidChange;
 
 		internal SelectionChoices _Choices { get; private set; } = new SelectionChoices();
 
@@ -42,7 +42,7 @@ namespace StardewConfigFramework.Options {
 					return;
 
 				_SelectedIndex = value;
-				ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
+				SelectionDidChange?.Invoke(this, SelectedIdentifier);
 			}
 		}
 
@@ -59,7 +59,7 @@ namespace StardewConfigFramework.Options {
 					return;
 
 				_SelectedIndex = index;
-				ValueDidChange?.Invoke(Identifier, SelectedIdentifier);
+				SelectionDidChange?.Invoke(this, SelectedIdentifier);
 			}
 		}
 

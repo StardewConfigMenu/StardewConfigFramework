@@ -2,7 +2,7 @@
 namespace StardewConfigFramework.Options {
 
 	public class Action: ModOption {
-		public delegate void Handler(string identifier);
+		public delegate void Handler(Action action);
 		public enum ActionType {
 			OK, SET, CLEAR, DONE, GIFT
 		}
@@ -15,7 +15,7 @@ namespace StardewConfigFramework.Options {
 		}
 
 		public void Trigger() {
-			ActionWasTriggered?.Invoke(Identifier);
+			ActionWasTriggered?.Invoke(this);
 		}
 	}
 }
