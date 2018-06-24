@@ -1,7 +1,6 @@
 using System;
 
 namespace StardewConfigFramework.Options {
-
 	public class Stepper: ModOption {
 		public delegate void Handler(Stepper stepper, decimal currentValue);
 		public enum DisplayType {
@@ -40,7 +39,6 @@ namespace StardewConfigFramework.Options {
 				ValueDidChange?.Invoke(this, _Value);
 			}
 		}
-
 
 		public void StepUp() {
 			Value = Value + StepSize;
