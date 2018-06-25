@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace StardewConfigFramework.Options {
 	/// <summary>
 	/// Contains the choices of a Selection
 	/// </summary>
-	internal class SelectionChoices {
+	internal class SelectionChoices: IList<SelectionChoice> {
 		public SelectionChoices() { }
 
 		public SelectionChoices(IReadOnlyList<SelectionChoice> choices) {
@@ -17,11 +18,13 @@ namespace StardewConfigFramework.Options {
 		private readonly OrderedDictionary dictionary = new OrderedDictionary();
 		public int Count => dictionary.Count;
 
+		public bool IsReadOnly => throw new System.NotImplementedException();
+
 		/// <summary>
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> at the specified index.
 		/// </summary>
 		/// <param name="index">Index.</param>
-		public SelectionChoice this[int index] => dictionary[index] as SelectionChoice;
+		public SelectionChoice this[int index] { get => dictionary[index] as SelectionChoice; set => dictionary[index] = value; }
 
 		/// <summary>
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> with the specified identifier.
@@ -47,9 +50,19 @@ namespace StardewConfigFramework.Options {
 			dictionary.Remove(identifier);
 		}
 
+		public void Clear() {
+			dictionary.Clear();
+		}
+
 		public bool Contains(string identifier) {
 			return dictionary.Contains(identifier);
 		}
+
+		public bool Contains(SelectionChoice choice) {
+			return dictionary.Contains(choice.Identifier);
+		}
+
+
 
 		/// <summary>
 		/// Index of the identifier
@@ -72,20 +85,33 @@ namespace StardewConfigFramework.Options {
 			return -1;
 		}
 
-		public IReadOnlyList<SelectionChoice> AsList() {
-			List<SelectionChoice> list = new List<SelectionChoice>();
-			foreach (SelectionChoice choice in dictionary) {
-				list.Add(choice);
-			}
-			return list.AsReadOnly();
+		public int IndexOf(SelectionChoice item) {
+			return IndexOf(item.Identifier);
 		}
 
-		public IReadOnlyList<string> GetLabels() {
-			List<string> list = new List<string>();
-			foreach (SelectionChoice choice in dictionary) {
-				list.Add(choice.Label);
+		public void RemoveAt(int index) {
+			dictionary.RemoveAt(index);
+		}
+
+		public void CopyTo(SelectionChoice[] array, int arrayIndex) {
+			dictionary.CopyTo(array, arrayIndex);
+		}
+
+		public bool Remove(SelectionChoice item) {
+			if (dictionary.Contains(item)) {
+				dictionary.Remove(item.Identifier);
+				return true;
+			} else {
+				return false;
 			}
-			return list.AsReadOnly();
+		}
+
+		public IEnumerator<SelectionChoice> GetEnumerator() {
+			return dictionary.GetEnumerator() as IEnumerator<SelectionChoice>;
+		}
+
+		IEnumerator IEnumerable.GetEnumerator() {
+			return dictionary.GetEnumerator();
 		}
 	}
 }

@@ -9,10 +9,10 @@ namespace StardewConfigFramework.Options {
 		internal SelectionChoices _Choices { get; private set; } = new SelectionChoices();
 
 		/// <summary>
-		/// Returns a Read Only copy of the choices collection
+		/// Returns a list of the choices collection
 		/// </summary>
 		/// <value>The choices.</value>
-		public IReadOnlyList<SelectionChoice> Choices => _Choices.AsList();
+		public IList<SelectionChoice> Choices => _Choices as IList<SelectionChoice>;
 
 		public Selection(string identifier, string labelText, IReadOnlyList<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
@@ -33,8 +33,8 @@ namespace StardewConfigFramework.Options {
 		public int SelectionIndex {
 			get => _SelectedIndex;
 			set {
-				if (Choices.Count == 0 && value == 0) {
-				} else if (value >= Choices.Count || value < 0) {
+				if (_Choices.Count == 0 && value == 0) {
+				} else if (value >= _Choices.Count || value < 0) {
 					throw new IndexOutOfRangeException("Selection is out of range of Choices");
 				}
 
@@ -102,10 +102,6 @@ namespace StardewConfigFramework.Options {
 
 		public int IndexOfLabel(string label) {
 			return _Choices.IndexOfLabel(label);
-		}
-
-		public IReadOnlyList<string> GetLabels() {
-			return _Choices.GetLabels();
 		}
 	}
 
