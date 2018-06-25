@@ -62,5 +62,9 @@ namespace StardewConfigFramework {
 		public ModOption RemoveOption(string identifier) {
 			return Tab.RemoveOption(identifier);
 		}
+
+		public bool Contains(string identifier) {
+			return Tab.Contains(identifier);
+		}
 	}
 }
