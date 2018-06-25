@@ -1,4 +1,4 @@
-﻿using StardewModdingAPI;
+using StardewModdingAPI;
 using StardewConfigFramework.Options;
 using System;
 
@@ -28,14 +28,6 @@ namespace StardewConfigFramework {
 
 		public int IndexOf(string identifier) {
 			return OptionList.IndexOf(identifier);
-		}
-
-		public Type GetType(string identifier) {
-			return OptionList[identifier].GetType();
-		}
-
-		public Type GetType(int index) {
-			return OptionList[index].GetType();
 		}
 
 		public void AddOption(ModOption option) {
