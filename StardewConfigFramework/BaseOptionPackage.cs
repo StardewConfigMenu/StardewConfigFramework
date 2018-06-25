@@ -9,7 +9,7 @@ namespace StardewConfigFramework {
 		}
 
 		public IManifest ModManifest { get; private set; }
-		protected List<OptionsTab> Tabs = new List<OptionsTab>();
+		protected readonly List<OptionsTab> Tabs = new List<OptionsTab>();
 
 		public int Count => Tabs.Count;
 		public bool IsReadOnly => false;

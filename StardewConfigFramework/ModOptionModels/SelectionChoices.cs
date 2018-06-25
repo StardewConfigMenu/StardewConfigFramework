@@ -6,7 +6,7 @@ namespace StardewConfigFramework.Options {
 	/// <summary>
 	/// Contains the choices of a Selection
 	/// </summary>
-	internal class SelectionChoices: IList<SelectionChoice> {
+	internal class SelectionChoices: IList<SelectionChoice>, IDictionary<string, SelectionChoice> {
 		public SelectionChoices() { }
 
 		public SelectionChoices(IList<SelectionChoice> choices) {
@@ -18,6 +18,10 @@ namespace StardewConfigFramework.Options {
 		private readonly OrderedDictionary dictionary = new OrderedDictionary();
 		public int Count => dictionary.Count;
 		public bool IsReadOnly => false;
+
+		public ICollection<string> Keys => dictionary.Keys as ICollection<string>;
+
+		public ICollection<SelectionChoice> Values => dictionary.Values as ICollection<SelectionChoice>;
 
 		/// <summary>
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> at the specified index.
@@ -106,6 +110,44 @@ namespace StardewConfigFramework.Options {
 
 		IEnumerator IEnumerable.GetEnumerator() {
 			return dictionary.GetEnumerator();
+		}
+
+		public void Add(string key, SelectionChoice value) {
+			dictionary.Add(key, value);
+		}
+
+		public bool ContainsKey(string key) {
+			return dictionary.Contains(key);
+		}
+
+		public bool TryGetValue(string key, out SelectionChoice value) {
+			if (!Contains(key)) {
+				value = null;
+				return false;
+			}
+
+			value = this[key];
+			return true;
+		}
+
+		public void Add(KeyValuePair<string, SelectionChoice> item) {
+			dictionary.Add(item.Key, item.Value);
+		}
+
+		public bool Contains(KeyValuePair<string, SelectionChoice> item) {
+			return dictionary.Contains(item.Key);
+		}
+
+		public void CopyTo(KeyValuePair<string, SelectionChoice>[] array, int arrayIndex) {
+			dictionary.CopyTo(array, arrayIndex);
+		}
+
+		public bool Remove(KeyValuePair<string, SelectionChoice> item) {
+			return Remove(item.Key);
+		}
+
+		IEnumerator<KeyValuePair<string, SelectionChoice>> IEnumerable<KeyValuePair<string, SelectionChoice>>.GetEnumerator() {
+			return (IEnumerator<KeyValuePair<string, SelectionChoice>>) dictionary.GetEnumerator();
 		}
 	}
 }
