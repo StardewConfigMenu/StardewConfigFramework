@@ -9,7 +9,7 @@ namespace StardewConfigFramework.Options {
 	internal class SelectionChoices: IList<SelectionChoice> {
 		public SelectionChoices() { }
 
-		public SelectionChoices(IReadOnlyList<SelectionChoice> choices) {
+		public SelectionChoices(IList<SelectionChoice> choices) {
 			foreach (SelectionChoice choice in choices) {
 				Add(choice);
 			}

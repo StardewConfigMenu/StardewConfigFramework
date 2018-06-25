@@ -14,14 +14,14 @@ namespace StardewConfigFramework.Options {
 		/// <value>The choices.</value>
 		public IList<SelectionChoice> Choices => _Choices as IList<SelectionChoice>;
 
-		public Selection(string identifier, string labelText, IReadOnlyList<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IList<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
 				_Choices = new SelectionChoices(choices);
 				SelectionIndex = defaultSelection;
 			}
 		}
 
-		public Selection(string identifier, string labelText, IReadOnlyList<SelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IList<SelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
 				_Choices = new SelectionChoices(choices);
 				if (choices.Count > 0)

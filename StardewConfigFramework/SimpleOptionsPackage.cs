@@ -1,70 +1,61 @@
 ﻿using StardewModdingAPI;
 using StardewConfigFramework.Options;
-using System.Collections.Generic;
 using System;
 
 namespace StardewConfigFramework {
-	public class SimpleOptionsPackage: IOptionsPackage {
-		public SimpleOptionsPackage(Mod mod) {
-			ModManifest = mod.ModManifest;
+	public class SimpleOptionsPackage: BaseOptionPackage {
+		public SimpleOptionsPackage(Mod mod) : base(mod) {
+			Tabs.Add(new OptionsTab(""));
 		}
 
-		public IManifest ModManifest { get; private set; }
-		public IList<OptionsTab> Tabs => _Tabs.AsReadOnly();
-		private List<OptionsTab> _Tabs = new List<OptionsTab> { new OptionsTab("") };
-		public IReadOnlyList<ModOption> OptionList => Tab.OptionList;
-		private OptionsTab Tab => Tabs[0];
+		private OptionsTab OptionList => Tabs[0];
 
 		public T GetOption<T>(string identifier) where T : ModOption {
-			return Tab.GetOption<T>(identifier);
+			return OptionList.GetOption<T>(identifier);
 		}
 
 		public T GetOption<T>(int index) where T : ModOption {
-			return Tab.GetOption<T>(index);
+			return OptionList.GetOption<T>(index);
 		}
 
 		public ModOption GetOption(string identifier) {
-			return Tab.GetOption(identifier);
+			return OptionList[identifier];
 		}
 
 		public ModOption GetOption(int index) {
-			return Tab.GetOption(index);
+			return OptionList[index];
 		}
 
 		public int IndexOf(string identifier) {
-			return Tab.IndexOf(identifier);
+			return OptionList.IndexOf(identifier);
 		}
 
 		public Type GetType(string identifier) {
-			return Tab.GetType(identifier);
+			return OptionList[identifier].GetType();
 		}
 
 		public Type GetType(int index) {
-			return Tab.GetType(index);
+			return OptionList[index].GetType();
 		}
 
 		public void AddOption(ModOption option) {
-			Tab.AddOption(option);
+			OptionList.Add(option);
 		}
 
-		public void InsertOption(ModOption option, int index) {
-			Tab.InsertOption(option, index);
+		public void InsertOption(int index, ModOption option) {
+			OptionList.Insert(index, option);
 		}
 
-		public void InsertOptionBefore(ModOption option, string identifier) {
-			Tab.InsertOptionBefore(option, identifier);
+		public void RemoveOptionAt(int index) {
+			OptionList.RemoveAt(index);
 		}
 
-		public ModOption RemoveOption(int index) {
-			return Tab.RemoveOption(index);
+		public void RemoveOption(string identifier) {
+			OptionList.Remove(identifier);
 		}
 
-		public ModOption RemoveOption(string identifier) {
-			return Tab.RemoveOption(identifier);
-		}
-
-		public bool Contains(string identifier) {
-			return Tab.Contains(identifier);
+		public bool ContainsOption(string identifier) {
+			return OptionList.Contains(identifier);
 		}
 	}
 }

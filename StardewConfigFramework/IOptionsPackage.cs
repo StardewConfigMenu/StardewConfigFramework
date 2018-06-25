@@ -2,8 +2,7 @@ using StardewModdingAPI;
 using System.Collections.Generic;
 
 namespace StardewConfigFramework {
-	public interface IOptionsPackage {
+	public interface IOptionsPackage: IList<OptionsTab> {
 		IManifest ModManifest { get; }
-		IList<OptionsTab> Tabs { get; }
 	}
 }

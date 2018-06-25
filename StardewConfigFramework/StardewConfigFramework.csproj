@@ -58,6 +58,7 @@
     <Compile Include="TabbedOptionsPackage.cs" />
     <Compile Include="OptionsTab.cs" />
     <Compile Include="ModOptionModels\SelectionChoices.cs" />
+    <Compile Include="BaseOptionPackage.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
