@@ -57,13 +57,17 @@
     <Compile Include="SimpleOptionsPackage.cs" />
     <Compile Include="TabbedOptionsPackage.cs" />
     <Compile Include="OptionsTab.cs" />
-    <Compile Include="ModOptionModels\SelectionChoices.cs" />
     <Compile Include="BaseOptionPackage.cs" />
+    <Compile Include="Common\OrderedIdentifierDictionary.cs" />
+    <Compile Include="Common\SCFObject.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <None Include="manifest.json" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Pathoschild.Stardew.ModBuildConfig.1.6.0\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="Exists('..\packages\Pathoschild.Stardew.ModBuildConfig.1.6.0\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
