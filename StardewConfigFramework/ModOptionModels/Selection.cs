@@ -67,13 +67,13 @@ namespace StardewConfigFramework.Options {
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> at the specified index.
 		/// </summary>
 		/// <param name="index">Index.</param>
-		public SelectionChoice this[int index] => _Choices[index];
+		public SelectionChoice this[int index] { get => _Choices[index]; set => _Choices[index] = value; }
 
 		/// <summary>
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> with the specified identifier.
 		/// </summary>
 		/// <param name="identifier">Identifier.</param>
-		public SelectionChoice this[string identifier] => _Choices[identifier];
+		public SelectionChoice this[string identifier] { get => _Choices[identifier]; set => _Choices[identifier] = value; }
 
 		public void Insert(int index, SelectionChoice choice) {
 			_Choices.Insert(index, choice);
