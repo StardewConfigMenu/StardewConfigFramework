@@ -12,6 +12,5 @@ namespace StardewConfigFramework {
 		public IManifest ModManifest { get; }
 		public IList<OptionsTab> Tabs => _Tabs;
 		private List<OptionsTab> _Tabs = new List<OptionsTab>();
-		public int TabCount => _Tabs.Count;
 	}
 }

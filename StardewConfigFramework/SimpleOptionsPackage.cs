@@ -11,37 +11,56 @@ namespace StardewConfigFramework {
 
 		public IManifest ModManifest { get; private set; }
 		public IList<OptionsTab> Tabs => _Tabs.AsReadOnly();
-		private List<OptionsTab> _Tabs => new List<OptionsTab> { Tab };
+		private List<OptionsTab> _Tabs = new List<OptionsTab> { new OptionsTab("") };
 		public IReadOnlyList<ModOption> OptionList => Tab.OptionList;
-		private OptionsTab Tab = new OptionsTab("");
-		public int TabCount { get; } = 1;
+		private OptionsTab Tab => Tabs[0];
 
-		public T GetOptionWithIdentifier<T>(string identifier) where T : ModOption {
-			return Tab.GetOptionWithIdentifier<T>(identifier);
+		public T GetOption<T>(string identifier) where T : ModOption {
+			return Tab.GetOption<T>(identifier);
 		}
 
-		public ModOption GetOptionWithIdentifier(string identifier) {
-			return Tab.GetOptionWithIdentifier(identifier);
+		public T GetOption<T>(int index) where T : ModOption {
+			return Tab.GetOption<T>(index);
 		}
 
-		public Type GetTypeOfIdentifier(string identifier) {
-			return Tab.GetTypeOfIdentifier(identifier);
+		public ModOption GetOption(string identifier) {
+			return Tab.GetOption(identifier);
+		}
+
+		public ModOption GetOption(int index) {
+			return Tab.GetOption(index);
+		}
+
+		public int IndexOf(string identifier) {
+			return Tab.IndexOf(identifier);
+		}
+
+		public Type GetType(string identifier) {
+			return Tab.GetType(identifier);
+		}
+
+		public Type GetType(int index) {
+			return Tab.GetType(index);
 		}
 
 		public void AddOption(ModOption option) {
 			Tab.AddOption(option);
 		}
 
-		public void InsertOption(ModOption option, int optionIndex) {
-			Tab.InsertOption(option, optionIndex);
+		public void InsertOption(ModOption option, int index) {
+			Tab.InsertOption(option, index);
 		}
 
-		public ModOption RemoveOptionAtIndex(int optionIndex) {
-			return Tab.RemoveOptionAtIndex(optionIndex);
+		public void InsertOptionBefore(ModOption option, string identifier) {
+			Tab.InsertOptionBefore(option, identifier);
 		}
 
-		public ModOption RemoveOptionWithIdentifier(string identifier) {
-			return Tab.RemoveOptionWithIdentifier(identifier);
+		public ModOption RemoveOption(int index) {
+			return Tab.RemoveOption(index);
+		}
+
+		public ModOption RemoveOption(string identifier) {
+			return Tab.RemoveOption(identifier);
 		}
 	}
 }

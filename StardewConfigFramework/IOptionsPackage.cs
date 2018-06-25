@@ -5,6 +5,5 @@ namespace StardewConfigFramework {
 	public interface IOptionsPackage {
 		IManifest ModManifest { get; }
 		IList<OptionsTab> Tabs { get; }
-		int TabCount { get; }
 	}
 }
