@@ -105,14 +105,10 @@ namespace StardewConfigFramework.Options {
 		}
 	}
 
-	public class SelectionChoice {
-		public SelectionChoice(string identifier, string label, string hoverText = null) {
-			Identifier = identifier;
-			Label = label;
-			HoverText = hoverText;
-		}
-		public readonly string Identifier;
-		public string Label;
-		public string HoverText;
+	public class SelectionChoice: Tuple<string, string, string> {
+		public SelectionChoice(string identifier, string label, string hoverText = null) : base(identifier, label, hoverText) { }
+		public string Identifier => Item1;
+		public string Label => Item2;
+		public string HoverText => Item3;
 	}
 }
