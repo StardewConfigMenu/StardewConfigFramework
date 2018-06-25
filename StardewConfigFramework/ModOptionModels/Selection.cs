@@ -83,8 +83,16 @@ namespace StardewConfigFramework.Options {
 			_Choices.Add(choice);
 		}
 
-		public void Remove(string identifier) {
-			_Choices.Remove(identifier);
+		public bool Remove(string identifier) {
+			return _Choices.Remove(identifier);
+		}
+
+		public void RemoveAt(int index) {
+			_Choices.RemoveAt(index);
+		}
+
+		public void Clear() {
+			_Choices.Clear();
 		}
 
 		public bool Contains(string identifier) {
@@ -98,10 +106,6 @@ namespace StardewConfigFramework.Options {
 		/// <param name="identifier">Identifier.</param>
 		public int IndexOf(string identifier) {
 			return _Choices.IndexOf(identifier);
-		}
-
-		public int IndexOfLabel(string label) {
-			return _Choices.IndexOfLabel(label);
 		}
 	}
 

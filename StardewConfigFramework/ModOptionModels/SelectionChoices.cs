@@ -17,8 +17,7 @@ namespace StardewConfigFramework.Options {
 
 		private readonly OrderedDictionary dictionary = new OrderedDictionary();
 		public int Count => dictionary.Count;
-
-		public bool IsReadOnly => throw new System.NotImplementedException();
+		public bool IsReadOnly => false;
 
 		/// <summary>
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> at the specified index.
@@ -30,15 +29,13 @@ namespace StardewConfigFramework.Options {
 		/// Gets the <see cref="T:StardewConfigFramework.Options.SelectionChoices"/> with the specified identifier.
 		/// </summary>
 		/// <param name="identifier">Identifier.</param>
-		public SelectionChoice this[string identifier] => dictionary[identifier] as SelectionChoice;
+		public SelectionChoice this[string identifier] { get => dictionary[identifier] as SelectionChoice; set => dictionary[identifier] = value; }
 
 		public void Insert(int index, SelectionChoice choice) {
-			dictionary.Remove(choice.Identifier);
 			dictionary.Insert(index, choice.Identifier, choice);
 		}
 
 		public void Add(SelectionChoice choice) {
-			dictionary.Remove(choice.Identifier);
 			dictionary.Add(choice.Identifier, choice);
 		}
 
@@ -46,8 +43,24 @@ namespace StardewConfigFramework.Options {
 		/// Remove the specified identifier.
 		/// </summary>
 		/// <param name="identifier">Identifier.</param>
-		public void Remove(string identifier) {
+		public bool Remove(string identifier) {
+			if (!Contains(identifier))
+				return false;
+
 			dictionary.Remove(identifier);
+			return true;
+		}
+
+		public bool Remove(SelectionChoice item) {
+			if (!Contains(item))
+				return false;
+
+			Remove(item.Identifier);
+			return true;
+		}
+
+		public void RemoveAt(int index) {
+			dictionary.RemoveAt(index);
 		}
 
 		public void Clear() {
@@ -59,10 +72,12 @@ namespace StardewConfigFramework.Options {
 		}
 
 		public bool Contains(SelectionChoice choice) {
-			return dictionary.Contains(choice.Identifier);
+			foreach (SelectionChoice item in dictionary) {
+				if (item == choice)
+					return true;
+			}
+			return false;
 		}
-
-
 
 		/// <summary>
 		/// Index of the identifier
@@ -77,33 +92,12 @@ namespace StardewConfigFramework.Options {
 			return -1;
 		}
 
-		public int IndexOfLabel(string label) {
-			for (int i = 0; i < dictionary.Count; i++) {
-				if (this[i].Label == label)
-					return i;
-			}
-			return -1;
-		}
-
 		public int IndexOf(SelectionChoice item) {
 			return IndexOf(item.Identifier);
 		}
 
-		public void RemoveAt(int index) {
-			dictionary.RemoveAt(index);
-		}
-
 		public void CopyTo(SelectionChoice[] array, int arrayIndex) {
 			dictionary.CopyTo(array, arrayIndex);
-		}
-
-		public bool Remove(SelectionChoice item) {
-			if (dictionary.Contains(item)) {
-				dictionary.Remove(item.Identifier);
-				return true;
-			} else {
-				return false;
-			}
 		}
 
 		public IEnumerator<SelectionChoice> GetEnumerator() {
