@@ -64,9 +64,16 @@ namespace StardewConfigFramework {
 		}
 
 		public ModOption RemoveOption(string identifier) {
+			if (!Contains(identifier))
+				return null;
+
 			var old = GetOption(identifier);
 			_OptionList.Remove(old);
 			return old;
+		}
+
+		public bool Contains(string identifier) {
+			return IndexOf(identifier) != -1;
 		}
 	}
 }
