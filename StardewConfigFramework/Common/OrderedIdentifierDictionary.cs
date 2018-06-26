@@ -8,8 +8,22 @@ namespace StardewConfigFramework {
 
 		protected readonly OrderedDictionary dictionary = new OrderedDictionary();
 
-		public T this[int index] { get => (T) dictionary[index]; set => dictionary[index] = value; }
-		public T this[string identifier] { get => (T) dictionary[identifier]; set => dictionary[identifier] = value; }
+		public T this[int index] {
+			get => (T) dictionary[index];
+			set {
+				RemoveAt(index);
+				Insert(index, value);
+			}
+		}
+		public T this[string identifier] {
+			get => (T) dictionary[identifier];
+			set {
+				if (identifier != value.Identifier)
+					throw new Exception("New value does not contain a matching identifier");
+
+				dictionary[identifier] = value;
+			}
+		}
 
 		public int Count => dictionary.Count;
 
@@ -28,7 +42,7 @@ namespace StardewConfigFramework {
 		}
 
 		public void Add(KeyValuePair<string, T> item) {
-			dictionary.Add(item.Key, item.Value);
+			dictionary.Add(item.Value.Identifier, item.Value);
 		}
 
 		public void Clear() {
@@ -44,7 +58,7 @@ namespace StardewConfigFramework {
 		}
 
 		public bool Contains(KeyValuePair<string, T> item) {
-			return dictionary.Contains(item.Key);
+			return dictionary.Contains(item.Value.Identifier);
 		}
 
 		public bool ContainsKey(string identifier) {
@@ -101,7 +115,7 @@ namespace StardewConfigFramework {
 		}
 
 		public bool Remove(KeyValuePair<string, T> item) {
-			return Remove(item.Key);
+			return Remove(item.Value.Identifier);
 		}
 
 		public void RemoveAt(int index) {
