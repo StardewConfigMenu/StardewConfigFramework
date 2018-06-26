@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace StardewConfigFramework {
-	abstract public class OrderedIdentifierDictionary<T>: IList<T>, IDictionary<string, T> where T : SCFObject {
+	public class OrderedIdentifierDictionary<T>: IList<T>, IDictionary<string, T> where T : SCFObject {
 
 		protected readonly OrderedDictionary dictionary = new OrderedDictionary();
 

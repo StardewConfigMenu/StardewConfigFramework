@@ -16,36 +16,36 @@ namespace StardewConfigFramework {
 
 		public OptionsTab this[int index] { get => Tabs[index]; set => Tabs[index] = value; }
 
-		public int IndexOf(OptionsTab item) {
-			return Tabs.IndexOf(item);
+		public int IndexOf(OptionsTab tab) {
+			return Tabs.IndexOf(tab);
 		}
 
-		public void Insert(int index, OptionsTab item) {
-			Tabs.Insert(index, item);
+		public void Insert(int index, OptionsTab tab) {
+			Tabs.Insert(index, tab);
 		}
 
 		public void RemoveAt(int index) {
 			Tabs.RemoveAt(index);
 		}
 
-		public void Add(OptionsTab item) {
-			Tabs.Add(item);
+		public void Add(OptionsTab tab) {
+			Tabs.Add(tab);
 		}
 
 		public void Clear() {
 			Tabs.Clear();
 		}
 
-		public bool Contains(OptionsTab item) {
-			return Tabs.Contains(item);
+		public bool Contains(OptionsTab tab) {
+			return Tabs.Contains(tab);
 		}
 
 		public void CopyTo(OptionsTab[] array, int arrayIndex) {
 			Tabs.CopyTo(array, arrayIndex);
 		}
 
-		public bool Remove(OptionsTab item) {
-			return Tabs.Remove(item);
+		public bool Remove(OptionsTab tab) {
+			return Tabs.Remove(tab);
 		}
 
 		public IEnumerator<OptionsTab> GetEnumerator() {

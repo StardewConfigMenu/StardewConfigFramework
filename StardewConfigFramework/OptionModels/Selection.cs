@@ -9,7 +9,7 @@ namespace StardewConfigFramework.Options {
 		public delegate void Handler(Selection selection);
 		public event Handler SelectionDidChange;
 
-		private readonly OrderedDictionary Choices = new OrderedDictionary();
+		private readonly OrderedIdentifierDictionary<SelectionChoice> Choices = new OrderedIdentifierDictionary<SelectionChoice>();
 
 		public Selection(string identifier, string labelText, IList<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
@@ -74,16 +74,16 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public void Add(SelectionChoice item) {
-			Choices.Add(item.Identifier, item);
+		public void Add(SelectionChoice choice) {
+			Choices.Add(choice.Identifier, choice);
 		}
 
-		public void Add(string identifier, SelectionChoice value) {
-			Choices.Add(identifier, value);
+		public void Add(string identifier, SelectionChoice choice) {
+			Choices.Add(identifier, choice);
 		}
 
-		public void Add(KeyValuePair<string, SelectionChoice> item) {
-			Choices.Add(item.Key, item.Value);
+		public void Add(KeyValuePair<string, SelectionChoice> choice) {
+			Choices.Add(choice.Key, choice.Value);
 		}
 
 		public void Clear() {
@@ -94,12 +94,12 @@ namespace StardewConfigFramework.Options {
 			return Choices.Contains(identifier);
 		}
 
-		public bool Contains(SelectionChoice item) {
-			return Choices.Contains(item.Identifier);
+		public bool Contains(SelectionChoice choice) {
+			return Choices.Contains(choice.Identifier);
 		}
 
-		public bool Contains(KeyValuePair<string, SelectionChoice> item) {
-			return Choices.Contains(item.Key);
+		public bool Contains(KeyValuePair<string, SelectionChoice> choice) {
+			return Choices.Contains(choice.Key);
 		}
 
 		public bool ContainsKey(string identifier) {
@@ -107,20 +107,13 @@ namespace StardewConfigFramework.Options {
 		}
 
 		public void CopyTo(SelectionChoice[] array, int arrayIndex) {
-			int j = 0;
-			for (int i = arrayIndex; i < Choices.Count + arrayIndex; i++) {
-				array[i] = (SelectionChoice) Choices[j];
-				j++;
-			}
+			Choices.CopyTo(array, arrayIndex);
 		}
 
 		public void CopyTo(KeyValuePair<string, SelectionChoice>[] array, int arrayIndex) {
 			Choices.CopyTo(array, arrayIndex);
 		}
 
-		public IEnumerator<SelectionChoice> GetEnumerator() {
-			return Choices.GetEnumerator() as IEnumerator<SelectionChoice>;
-		}
 
 		/// <summary>
 		/// Index of the identifier
@@ -128,49 +121,39 @@ namespace StardewConfigFramework.Options {
 		/// <returns>The index of of the <paramref name="identifier"/>. Returns -1 if identifier does not exist.</returns>
 		/// <param name="identifier">Identifier.</param>
 		public int IndexOf(string identifier) {
-			for (int i = 0; i < Choices.Count; i++) {
-				if (Choices[i] == Choices[identifier])
-					return i;
-			}
-			return -1;
+			return Choices.IndexOf(identifier);
 		}
 
-		public int IndexOf(SelectionChoice item) {
-			return IndexOf(item.Identifier);
+		public int IndexOf(SelectionChoice choice) {
+			return IndexOf(choice.Identifier);
 		}
 
-		public void Insert(int index, SelectionChoice item) {
-			Choices.Insert(index, item.Identifier, item);
+		public void Insert(int index, SelectionChoice choice) {
+			Choices.Insert(index, choice);
 		}
 
-		public bool Remove(SelectionChoice item) {
-			throw new NotImplementedException();
+		public bool Remove(SelectionChoice choice) {
+			return Choices.Remove(choice);
 		}
 
 		public bool Remove(string identifier) {
-			if (!Contains(identifier))
-				return false;
-
-			Choices.Remove(identifier);
-			return true;
+			return Choices.Remove(identifier);
 		}
 
-		public bool Remove(KeyValuePair<string, SelectionChoice> item) {
-			return Remove(item.Key);
+		public bool Remove(KeyValuePair<string, SelectionChoice> choice) {
+			return Remove(choice);
 		}
 
 		public void RemoveAt(int index) {
 			Choices.RemoveAt(index);
 		}
 
-		public bool TryGetValue(string identifier, out SelectionChoice value) {
-			if (!Contains(identifier)) {
-				value = default(SelectionChoice);
-				return false;
-			}
+		public bool TryGetValue(string identifier, out SelectionChoice choice) {
+			return Choices.TryGetValue(identifier, out choice);
+		}
 
-			value = this[identifier];
-			return true;
+		public IEnumerator<SelectionChoice> GetEnumerator() {
+			return Choices.GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator() {
@@ -178,7 +161,7 @@ namespace StardewConfigFramework.Options {
 		}
 
 		IEnumerator<KeyValuePair<string, SelectionChoice>> IEnumerable<KeyValuePair<string, SelectionChoice>>.GetEnumerator() {
-			return Choices.GetEnumerator() as IEnumerator<KeyValuePair<string, SelectionChoice>>;
+			return ((IDictionary<string, SelectionChoice>) Choices).GetEnumerator();
 		}
 	}
 
