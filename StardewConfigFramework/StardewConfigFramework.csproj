@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,12 +55,13 @@
     <Compile Include="OptionModels\ModOption.cs" />
     <Compile Include="OptionModels\Action.cs" />
     <Compile Include="OptionsTab.cs" />
-    <Compile Include="Common\OrderedIdentifierDictionary.cs" />
+    <Compile Include="Common\SCFOrderedDictionary.cs" />
     <Compile Include="Common\SCFObject.cs" />
     <Compile Include="OptionPackages\IOptionsPackage.cs" />
     <Compile Include="OptionPackages\BaseOptionPackage.cs" />
     <Compile Include="OptionPackages\SimpleOptionsPackage.cs" />
     <Compile Include="OptionPackages\TabbedOptionsPackage.cs" />
+    <Compile Include="Common\ISCFOrderedDictionary.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 
 namespace StardewConfigFramework {
-	internal class OrderedIdentifierDictionary<T>: IList<T>, IDictionary<string, T> where T : SCFObject {
+	internal class SCFOrderedDictionary<T>: ISCFOrderedDictionary<T> where T : SCFObject {
 
 		protected readonly OrderedDictionary dictionary = new OrderedDictionary();
 
@@ -37,8 +37,8 @@ namespace StardewConfigFramework {
 			dictionary.Add(item.Identifier, item);
 		}
 
-		public void Add(string identifier, T value) {
-			dictionary.Add(identifier, value);
+		public void Add(string identifier, T item) {
+			dictionary.Add(identifier, item);
 		}
 
 		public void Add(KeyValuePair<string, T> item) {

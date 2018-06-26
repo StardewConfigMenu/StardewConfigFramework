@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using StardewConfigFramework.Options;
 
 namespace StardewConfigFramework {
-	public class OptionsTab: IList<ModOption>, IDictionary<string, ModOption> {
+	public class OptionsTab: ISCFOrderedDictionary<ModOption> {
 
-		private readonly OrderedIdentifierDictionary<ModOption> Options = new OrderedIdentifierDictionary<ModOption>();
+		private readonly SCFOrderedDictionary<ModOption> Options = new SCFOrderedDictionary<ModOption>();
 
 		public OptionsTab(string label) {
 			Label = label;
