@@ -3,7 +3,7 @@ using StardewModdingAPI;
 
 namespace StardewConfigFramework {
 	public class SimpleOptionsPackage: BaseOptionPackage {
-		public SimpleOptionsPackage(Mod mod) : base(mod) {
+		public SimpleOptionsPackage(IMod mod) : base(mod) {
 			Tabs.Add(new OptionsTab(""));
 		}
 

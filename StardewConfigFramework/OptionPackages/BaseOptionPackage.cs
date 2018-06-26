@@ -4,7 +4,7 @@ using StardewModdingAPI;
 
 namespace StardewConfigFramework {
 	public abstract class BaseOptionPackage: IOptionsPackage {
-		protected BaseOptionPackage(Mod mod) {
+		protected BaseOptionPackage(IMod mod) {
 			ModManifest = mod.ModManifest;
 		}
 
