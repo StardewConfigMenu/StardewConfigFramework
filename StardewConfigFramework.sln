@@ -4,6 +4,8 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StardewConfigFramework", "StardewConfigFramework\StardewConfigFramework.csproj", "{88C67B7F-E19D-49E1-8FBB-E1119AD12B3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StardewConfigFrameworkTests", "StardewConfigFrameworkTests\StardewConfigFrameworkTests.csproj", "{114E42A2-A904-4B6F-B41B-4CEFE87CDD69}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{88C67B7F-E19D-49E1-8FBB-E1119AD12B3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C67B7F-E19D-49E1-8FBB-E1119AD12B3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C67B7F-E19D-49E1-8FBB-E1119AD12B3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{114E42A2-A904-4B6F-B41B-4CEFE87CDD69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{114E42A2-A904-4B6F-B41B-4CEFE87CDD69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{114E42A2-A904-4B6F-B41B-4CEFE87CDD69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{114E42A2-A904-4B6F-B41B-4CEFE87CDD69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
