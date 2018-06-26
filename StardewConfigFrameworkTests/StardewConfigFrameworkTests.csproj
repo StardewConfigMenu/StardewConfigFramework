@@ -44,9 +44,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="PackageTests.cs" />
     <Compile Include="TestConfigMenu.cs" />
     <Compile Include="TestMod.cs" />
+    <Compile Include="BaseTestClass.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

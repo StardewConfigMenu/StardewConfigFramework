@@ -4,6 +4,10 @@ using StardewModdingAPI;
 
 namespace StardewConfigFrameworkTests {
 	public class TestMod: IMod {
+		public TestMod() { }
+		public TestMod(string id) {
+			manifest = new TestManifest(id);
+		}
 
 		public IModHelper Helper => throw new NotImplementedException();
 
@@ -22,7 +26,14 @@ namespace StardewConfigFrameworkTests {
 	}
 
 	public class TestManifest: IManifest {
-		public string Name => "Test Mod";
+		public TestManifest() { }
+		public TestManifest(string id) {
+			uniqueID = id;
+		}
+
+		private string uniqueID = "Test.Mod";
+
+		public string Name => uniqueID;
 
 		public string Description => throw new NotImplementedException();
 
@@ -32,7 +43,7 @@ namespace StardewConfigFrameworkTests {
 
 		public ISemanticVersion MinimumApiVersion => throw new NotImplementedException();
 
-		public string UniqueID => "Test.Mod";
+		public string UniqueID => uniqueID;
 
 		public string EntryDll => throw new NotImplementedException();
 
