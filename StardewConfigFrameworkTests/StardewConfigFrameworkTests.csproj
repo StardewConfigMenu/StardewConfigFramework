@@ -49,6 +49,7 @@
     <Compile Include="TestObjects\TestMod.cs" />
     <Compile Include="TestObjects\TestConfigMenu.cs" />
     <Compile Include="OptionTabTests.cs" />
+    <Compile Include="OrderedIdentifierDictionaryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestObjects\" />
