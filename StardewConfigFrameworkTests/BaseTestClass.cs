@@ -8,13 +8,13 @@ namespace StardewConfigFrameworkTests {
 		protected TestMod Mod;
 
 		[SetUp]
-		public void SetUp() {
+		public void BaseSetUp() {
 			Menu = new TestConfigMenu();
 			Mod = new TestMod();
 		}
 
 		[TearDown]
-		public void TearDown() {
+		public void BaseTearDown() {
 			Menu = null;
 			Mod = null;
 		}
