@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using StardewConfigFramework.Options;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 
 namespace StardewConfigFramework {
 	public class TabbedOptionsPackage: BaseOptionPackage {

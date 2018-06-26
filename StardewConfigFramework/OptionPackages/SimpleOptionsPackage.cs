@@ -1,6 +1,5 @@
-using StardewModdingAPI;
 using StardewConfigFramework.Options;
-using System;
+using StardewModdingAPI;
 
 namespace StardewConfigFramework {
 	public class SimpleOptionsPackage: BaseOptionPackage {
