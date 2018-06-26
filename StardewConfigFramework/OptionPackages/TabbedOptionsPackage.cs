@@ -2,6 +2,6 @@
 
 namespace StardewConfigFramework {
 	public class TabbedOptionsPackage: BaseOptionPackage {
-		public TabbedOptionsPackage(Mod mod) : base(mod) { }
+		public TabbedOptionsPackage(IMod mod) : base(mod) { }
 	}
 }
