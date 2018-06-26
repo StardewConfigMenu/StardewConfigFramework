@@ -21,7 +21,7 @@ namespace StardewConfigFramework {
 
 		public ICollection<ModOption> Values => Options.Values;
 
-		public ModOption this[string key] { get => Options[key]; set => Options[key] = value; }
+		public ModOption this[string identifier] { get => Options[identifier]; set => Options[identifier] = value; }
 		public ModOption this[int index] { get => Options[index]; set => Options[index] = value; }
 
 		public T GetOption<T>(string identifier) where T : ModOption {
@@ -85,20 +85,20 @@ namespace StardewConfigFramework {
 			return Options.GetEnumerator();
 		}
 
-		public void Add(string key, ModOption value) {
-			Options.Add(key, value);
+		public void Add(string identifier, ModOption value) {
+			Options.Add(identifier, value);
 		}
 
-		public bool ContainsKey(string key) {
-			return Options.ContainsKey(key);
+		public bool ContainsKey(string identifier) {
+			return Options.ContainsKey(identifier);
 		}
 
-		public bool Remove(string key) {
-			return Options.Remove(key);
+		public bool Remove(string identifier) {
+			return Options.Remove(identifier);
 		}
 
-		public bool TryGetValue(string key, out ModOption value) {
-			return Options.TryGetValue(key, out value);
+		public bool TryGetValue(string identifier, out ModOption value) {
+			return Options.TryGetValue(identifier, out value);
 		}
 
 		public void Add(KeyValuePair<string, ModOption> option) {
