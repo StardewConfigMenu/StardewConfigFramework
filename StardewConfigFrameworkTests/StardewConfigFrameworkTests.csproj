@@ -30,6 +30,9 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="StardewModdingAPI">
+      <HintPath>..\..\..\..\Library\Application Support\Steam\steamapps\common\Stardew Valley\Contents\MacOS\StardewModdingAPI.exe</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -42,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Test.cs" />
+    <Compile Include="TestConfigMenu.cs" />
+    <Compile Include="TestMod.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
