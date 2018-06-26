@@ -25,7 +25,7 @@ namespace StardewConfigFramework {
 			return OptionList[index];
 		}
 
-		public int IndexOf(string identifier) {
+		public int IndexOfOption(string identifier) {
 			return OptionList.IndexOf(identifier);
 		}
 
