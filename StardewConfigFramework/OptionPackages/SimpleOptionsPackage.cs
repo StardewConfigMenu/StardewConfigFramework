@@ -41,8 +41,8 @@ namespace StardewConfigFramework {
 			OptionList.RemoveAt(index);
 		}
 
-		public void RemoveOption(string identifier) {
-			OptionList.Remove(identifier);
+		public bool RemoveOption(string identifier) {
+			return OptionList.Remove(identifier);
 		}
 
 		public bool ContainsOption(string identifier) {
