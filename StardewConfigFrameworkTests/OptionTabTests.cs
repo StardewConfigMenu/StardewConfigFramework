@@ -25,7 +25,6 @@ namespace StardewConfigFrameworkTests {
 			var option1dupe = new CategoryLabel("option1", "Option 1 Dupe");
 
 			Tab.Add(option1);
-
 			Assert.Catch(() => Tab.Add(option1dupe));
 		}
 
@@ -39,7 +38,16 @@ namespace StardewConfigFrameworkTests {
 			Tab.Add(option2);
 			Tab.Add(option3);
 
-			Assert.AreEqual(Tab["option2"].Label, "Option 2");
+			Assert.Multiple(() => {
+				Assert.AreEqual(Tab["option1"].Label, "Option 1");
+				Assert.AreEqual(Tab["option2"].Label, "Option 2");
+				Assert.AreEqual(Tab["option3"].Label, "Option 3");
+				Assert.AreEqual(Tab.Count, 3);
+				Assert.IsNull(Tab["option4"]);
+				Assert.Catch(() => {
+					var invalid = Tab[3];
+				});
+			});
 		}
 
 		[Test]
@@ -55,7 +63,12 @@ namespace StardewConfigFrameworkTests {
 
 			Tab[1] = option4;
 
-			Assert.AreEqual(Tab.IndexOf("option4"), 1);
+			Assert.Multiple(() => {
+				Assert.AreEqual(Tab[0].Identifier, "option1");
+				Assert.AreEqual(Tab[1].Identifier, "option4");
+				Assert.AreEqual(Tab[2].Identifier, "option3");
+				Assert.AreEqual(Tab.Count, 3);
+			});
 		}
 
 		[Test]
