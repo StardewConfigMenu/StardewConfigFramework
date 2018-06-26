@@ -29,8 +29,8 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public SelectionChoice this[int index] { get => (SelectionChoice) Choices[index]; set => Choices[index] = value; }
-		public SelectionChoice this[string identifier] { get => (SelectionChoice) Choices[identifier]; set => Choices[identifier] = value; }
+		public SelectionChoice this[int index] { get => Choices[index]; set => Choices[index] = value; }
+		public SelectionChoice this[string identifier] { get => Choices[identifier]; set => Choices[identifier] = value; }
 
 		public int Count => Choices.Count;
 
