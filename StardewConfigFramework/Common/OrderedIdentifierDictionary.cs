@@ -89,7 +89,7 @@ namespace StardewConfigFramework {
 		}
 
 		public bool Remove(T item) {
-			dictionary.Remove(item.Identifier);
+			return Remove(item.Identifier);
 		}
 
 		public bool Remove(string identifier) {
