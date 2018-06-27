@@ -15,7 +15,8 @@ namespace StardewConfigFramework.Options {
 				foreach (SelectionChoice choice in choices) {
 					Add(choice.Identifier, choice);
 				}
-				SelectedIndex = defaultSelection;
+				CheckValidIndex(defaultSelection);
+				_SelectedIndex = defaultSelection;
 			}
 		}
 
@@ -24,7 +25,8 @@ namespace StardewConfigFramework.Options {
 				foreach (SelectionChoice choice in choices) {
 					Add(choice.Identifier, choice);
 				}
-				SelectedIdentifier = defaultSelection;
+				CheckValidIdentifier(defaultSelection);
+				_SelectedIdentifier = defaultSelection;
 			}
 		}
 
@@ -43,10 +45,7 @@ namespace StardewConfigFramework.Options {
 		public int SelectedIndex {
 			get => _SelectedIndex;
 			set {
-				if (Choices.Count == 0 && value == 0) {
-				} else if (value >= Choices.Count || value < 0) {
-					throw new IndexOutOfRangeException("Selection is out of range of Choices");
-				}
+				CheckValidIndex(value);
 
 				if (_SelectedIndex == value)
 					return;
@@ -56,15 +55,12 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public SelectionChoice SelectedChoice {
-			get => (SelectedIndex < Choices.Count) ? Choices[SelectedIndex] as SelectionChoice : null;
-		}
+		public SelectionChoice SelectedChoice => (Choices.Count != 0) ? Choices[SelectedIndex] as SelectionChoice : null;
 
 		public string SelectedIdentifier {
-			get => (SelectedChoice != null) ? SelectedChoice.Identifier : null;
+			get => SelectedChoice?.Identifier;
 			set {
-				if (!Choices.Contains(value))
-					throw new KeyNotFoundException("Identifier does not exist in Choices");
+				CheckValidIdentifier(value);
 
 				int index = IndexOf(value);
 				if (_SelectedIndex == index)
@@ -73,6 +69,18 @@ namespace StardewConfigFramework.Options {
 				_SelectedIndex = index;
 				SelectionDidChange?.Invoke(this);
 			}
+		}
+
+		private void CheckValidIndex(int value) {
+			if (Count == 0 && value == 0) {
+			} else if (value >= Choices.Count || value < 0) {
+				throw new IndexOutOfRangeException("Selection is out of range of Choices");
+			}
+		}
+
+		private void CheckValidIdentifier(string value) {
+			if (!Contains(value))
+				throw new KeyNotFoundException("Identifier does not exist in Choices");
 		}
 
 		public void Add(SelectionChoice choice) {
