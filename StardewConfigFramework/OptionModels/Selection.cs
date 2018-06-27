@@ -95,6 +95,10 @@ namespace StardewConfigFramework.Options {
 			Choices.Add(choice.Key, choice.Value);
 		}
 
+		public void Add(IList<ISelectionChoice> choices) {
+			Choices.Add(choices);
+		}
+
 		public void Clear() {
 			Choices.Clear();
 		}

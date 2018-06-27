@@ -45,6 +45,12 @@ namespace StardewConfigFramework {
 			dictionary.Add(pair.Value.Identifier, pair.Value);
 		}
 
+		public void Add(IList<T> items) {
+			foreach (T item in items) {
+				Add(item);
+			}
+		}
+
 		public void Clear() {
 			dictionary.Clear();
 		}

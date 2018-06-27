@@ -57,6 +57,10 @@ namespace StardewConfigFramework {
 			Options.Add(option);
 		}
 
+		public void Add(IList<ModOption> options) {
+			Options.Add(options);
+		}
+
 		public void Clear() {
 			Options.Clear();
 		}
