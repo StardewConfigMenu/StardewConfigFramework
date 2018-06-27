@@ -16,14 +16,16 @@ namespace StardewConfigFrameworkTests {
 				new CategoryLabel("option0", "Option 0"),
 				new CategoryLabel("option1", "Option 1"),
 				new CategoryLabel("option2", "Option 2"),
-				new CategoryLabel("option3", "Option 3")
+				new CategoryLabel("option3", "Option 3"),
+				new CategoryLabel("option4", "Option 4")
 			};
 
 			DupeOption = new List<ModOption> {
 				new CategoryLabel("option0", "Dupe Option 0"),
 				new CategoryLabel("option1", "Dupe Option 1"),
 				new CategoryLabel("option2", "Dupe Option 2"),
-				new CategoryLabel("option3", "Dupe Option 3")
+				new CategoryLabel("option3", "Dupe Option 3"),
+				new CategoryLabel("option4", "Dupe Option 4")
 			};
 		}
 
