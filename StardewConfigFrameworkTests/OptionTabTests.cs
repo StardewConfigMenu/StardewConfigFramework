@@ -1,8 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
 using StardewConfigFramework;
 using StardewConfigFramework.Options;
-using System;
-using System.Collections.Generic;
 
 namespace StardewConfigFrameworkTests {
 	[TestFixture]

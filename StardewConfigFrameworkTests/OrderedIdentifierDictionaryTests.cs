@@ -1,10 +1,8 @@
-﻿using NUnit.Framework;
-using StardewConfigFramework.Options;
-using StardewConfigFrameworkTests;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using NUnit.Framework;
+using StardewConfigFramework;
 
-namespace StardewConfigFramework {
+namespace StardewConfigFrameworkTests {
 	[TestFixture]
 	public abstract class OrderedIdentifierDictionaryTests<T>: BaseTestClass where T : SCFObject {
 
