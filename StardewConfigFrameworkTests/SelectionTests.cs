@@ -5,25 +5,25 @@ using StardewConfigFramework.Options;
 
 namespace StardewConfigFrameworkTests {
 	[TestFixture()]
-	public class SelectionTests: OrderedIdentifierDictionaryTests<ModOption> {
+	public class SelectionTests: OrderedIdentifierDictionaryTests<SelectionChoice> {
 
-		private OptionsTab Tab => (OptionsTab) OrdDic;
+		private Selection Selection => (Selection) OrdDic;
 
 		[SetUp]
 		public void SetUp() {
-			OrdDic = new OptionsTab("Tab Name");
-			Option = new List<ModOption> {
-				new CategoryLabel("option0", "Option 0"),
-				new CategoryLabel("option1", "Option 1"),
-				new CategoryLabel("option2", "Option 2"),
-				new CategoryLabel("option3", "Option 3")
+			OrdDic = new Selection("testSelection", "Test Selection");
+			Option = new List<SelectionChoice> {
+				new SelectionChoice("option0", "Option 0"),
+				new SelectionChoice("option1", "Option 1"),
+				new SelectionChoice("option2", "Option 2"),
+				new SelectionChoice("option3", "Option 3")
 			};
 
-			DupeOption = new List<ModOption> {
-				new CategoryLabel("option0", "Dupe Option 0"),
-				new CategoryLabel("option1", "Dupe Option 1"),
-				new CategoryLabel("option2", "Dupe Option 2"),
-				new CategoryLabel("option3", "Dupe Option 3")
+			DupeOption = new List<SelectionChoice> {
+				new SelectionChoice("option0", "Dupe Option 0"),
+				new SelectionChoice("option1", "Dupe Option 1"),
+				new SelectionChoice("option2", "Dupe Option 2"),
+				new SelectionChoice("option3", "Dupe Option 3")
 			};
 		}
 
