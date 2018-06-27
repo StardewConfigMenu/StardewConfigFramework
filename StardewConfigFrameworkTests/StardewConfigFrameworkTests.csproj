@@ -52,6 +52,7 @@
     <Compile Include="OptionTabTests.cs" />
     <Compile Include="OrderedIdentifierDictionaryTests.cs" />
     <Compile Include="OptionModelTests\SelectionTests.cs" />
+    <Compile Include="Stories\MenuStories.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestObjects\" />

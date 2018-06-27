@@ -1,13 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using StardewConfigFramework;
 
 namespace StardewConfigFrameworkTests {
 	public class TestConfigMenu: IConfigMenu {
 
-		public IOptionsPackage Package;
+		public List<IOptionsPackage> PackageList = new List<IOptionsPackage>();
 
 		public override void AddOptionsPackage(IOptionsPackage package) {
-			Package = package;
+			PackageList.Add(package);
 		}
 	}
 }

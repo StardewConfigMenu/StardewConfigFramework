@@ -102,5 +102,25 @@ namespace StardewConfigFrameworkTests {
 			});
 
 		}
+
+		[Test]
+		public void ForEach() {
+
+			OrdDic.Add(new List<T> {
+				Option[0],
+				Option[1],
+				Option[2],
+				Option[3]
+			});
+
+			var index = 0;
+			Assert.Multiple(() => {
+				foreach (T option in OrdDic) {
+					Assert.AreEqual(option.Identifier, "option" + index.ToString());
+					index++;
+				}
+			});
+
+		}
 	}
 }
