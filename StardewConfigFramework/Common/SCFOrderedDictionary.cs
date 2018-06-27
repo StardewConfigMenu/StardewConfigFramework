@@ -85,7 +85,7 @@ namespace StardewConfigFramework {
 		}
 
 		public IEnumerator<T> GetEnumerator() {
-			return dictionary.GetEnumerator() as IEnumerator<T>;
+			return new SCFListEnumerator<T>(dictionary);
 		}
 
 		/// <summary>
@@ -145,7 +145,7 @@ namespace StardewConfigFramework {
 		}
 
 		IEnumerator<KeyValuePair<string, T>> IEnumerable<KeyValuePair<string, T>>.GetEnumerator() {
-			return dictionary.GetEnumerator() as IEnumerator<KeyValuePair<string, T>>;
+			return new SCFDictionaryEnumerator<T>(dictionary);
 		}
 
 		private void CheckIdentifierAgainstItem(string identifier, T item) {

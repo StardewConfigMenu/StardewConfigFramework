@@ -62,6 +62,7 @@
     <Compile Include="OptionPackages\SimpleOptionsPackage.cs" />
     <Compile Include="OptionPackages\TabbedOptionsPackage.cs" />
     <Compile Include="Common\ISCFOrderedDictionary.cs" />
+    <Compile Include="SCFOrderedDictionaryEnumerator.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
