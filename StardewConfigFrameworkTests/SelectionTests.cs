@@ -33,5 +33,17 @@ namespace StardewConfigFrameworkTests {
 			Option = null;
 			DupeOption = null;
 		}
+
+		[Test]
+		public void SelectionInit() {
+
+			var selection = new Selection("test", "Test");
+
+			Assert.Multiple(() => {
+				Assert.AreEqual(selection.SelectedIndex, 0);
+				Assert.AreEqual(selection.SelectedChoice, null);
+				Assert.AreEqual(selection.SelectedIdentifier, null);
+			});
+		}
 	}
 }
