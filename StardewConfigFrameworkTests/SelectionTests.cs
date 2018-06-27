@@ -89,5 +89,68 @@ namespace StardewConfigFrameworkTests {
 				Assert.IsFalse(eventDidFire);
 			});
 		}
+
+		[Test]
+		public void InitDefaultSelection() {
+
+			var choices = new List<ISelectionChoice> {
+				Option[0],
+				Option[1],
+				Option[2]
+			};
+
+			var selection = new Selection("test", "Test", choices, 2);
+
+			Assert.Multiple(() => {
+				Assert.AreEqual(selection.SelectedChoice, Option[2]);
+				Assert.AreEqual(selection.SelectedIndex, 2);
+				Assert.AreEqual(selection.SelectedIdentifier, Option[2].Identifier);
+			});
+		}
+
+		[Test]
+		public void EventDoesFireOnChange() {
+
+			var choices = new List<ISelectionChoice> {
+				Option[0],
+				Option[1],
+				Option[2]
+			};
+
+			Selection.Add(choices);
+			var eventDidFire = false;
+			Selection.SelectionDidChange += (option) => {
+				eventDidFire = true;
+			};
+
+			Selection.SelectedIndex = 1;
+
+			Assert.Multiple(() => {
+				Assert.IsTrue(eventDidFire);
+			});
+		}
+
+		[Test]
+		public void EventDoesNotFireOnNoChange() {
+
+			var choices = new List<ISelectionChoice> {
+				Option[0],
+				Option[1],
+				Option[2]
+			};
+
+			Selection.Add(choices);
+			var eventDidFire = false;
+			Selection.SelectionDidChange += (option) => {
+				eventDidFire = true;
+			};
+
+			Selection.SelectedIndex = 0;
+			Selection.SelectedIdentifier = ID(0);
+
+			Assert.Multiple(() => {
+				Assert.IsFalse(eventDidFire);
+			});
+		}
 	}
 }
