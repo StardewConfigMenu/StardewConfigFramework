@@ -56,10 +56,12 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public SelectionChoice SelectedChoice => Choices[SelectedIndex] as SelectionChoice;
+		public SelectionChoice SelectedChoice {
+			get => (SelectedIndex < Choices.Count) ? Choices[SelectedIndex] as SelectionChoice : null;
+		}
 
 		public string SelectedIdentifier {
-			get => SelectedChoice.Identifier;
+			get => (SelectedChoice != null) ? SelectedChoice.Identifier : null;
 			set {
 				if (!Choices.Contains(value))
 					throw new KeyNotFoundException("Identifier does not exist in Choices");
