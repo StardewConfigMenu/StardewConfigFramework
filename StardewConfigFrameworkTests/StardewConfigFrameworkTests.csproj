@@ -9,6 +9,7 @@
     <RootNamespace>StardewConfigFrameworkTests</RootNamespace>
     <AssemblyName>StardewConfigFrameworkTests</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <ReleaseVersion></ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -50,9 +51,11 @@
     <Compile Include="TestObjects\TestConfigMenu.cs" />
     <Compile Include="OptionTabTests.cs" />
     <Compile Include="OrderedIdentifierDictionaryTests.cs" />
+    <Compile Include="SelectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestObjects\" />
+    <Folder Include="OptionModelTests\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
