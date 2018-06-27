@@ -104,7 +104,7 @@ namespace StardewConfigFrameworkTests {
 		}
 
 		[Test]
-		public void ForEach() {
+		public void ListForEach() {
 
 			OrdDic.Add(new List<T> {
 				Option[0],
@@ -115,12 +115,30 @@ namespace StardewConfigFrameworkTests {
 
 			var index = 0;
 			Assert.Multiple(() => {
-				foreach (T option in OrdDic) {
+				foreach (T option in (IList<T>) OrdDic) {
 					Assert.AreEqual(option.Identifier, "option" + index.ToString());
 					index++;
 				}
 			});
+		}
 
+		[Test]
+		public void DictionaryForEach() {
+
+			OrdDic.Add(new List<T> {
+				Option[0],
+				Option[1],
+				Option[2],
+				Option[3]
+			});
+
+			var index = 0;
+			Assert.Multiple(() => {
+				foreach (var option in (IDictionary<string, T>) OrdDic) {
+					Assert.AreEqual(option.Key, "option" + index.ToString());
+					index++;
+				}
+			});
 		}
 	}
 }
