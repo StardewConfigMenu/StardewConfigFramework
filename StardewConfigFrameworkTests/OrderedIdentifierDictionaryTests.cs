@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace StardewConfigFramework {
 	[TestFixture]
-	public abstract class OrderIdentifierDictionaryTests<T> where T : SCFObject {
+	public abstract class OrderedIdentifierDictionaryTests<T> where T : SCFObject {
 
 		protected ISCFOrderedDictionary<T> OrdDic;
 		protected List<T> Option;
