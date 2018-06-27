@@ -18,9 +18,7 @@ namespace StardewConfigFramework {
 		public T this[string identifier] {
 			get => (T) dictionary[identifier];
 			set {
-				if (identifier != value.Identifier)
-					throw new Exception("New value does not contain a matching identifier");
-
+				CheckIdentifierAgainstItem(identifier, value);
 				dictionary[identifier] = value;
 			}
 		}
@@ -38,11 +36,13 @@ namespace StardewConfigFramework {
 		}
 
 		public void Add(string identifier, T item) {
+			CheckIdentifierAgainstItem(identifier, item);
 			dictionary.Add(identifier, item);
 		}
 
-		public void Add(KeyValuePair<string, T> item) {
-			dictionary.Add(item.Value.Identifier, item.Value);
+		public void Add(KeyValuePair<string, T> pair) {
+			CheckKeyValuePair(pair);
+			dictionary.Add(pair.Value.Identifier, pair.Value);
 		}
 
 		public void Clear() {
@@ -57,8 +57,9 @@ namespace StardewConfigFramework {
 			return dictionary.Contains(item.Identifier);
 		}
 
-		public bool Contains(KeyValuePair<string, T> item) {
-			return dictionary.Contains(item.Value.Identifier);
+		public bool Contains(KeyValuePair<string, T> pair) {
+			CheckKeyValuePair(pair);
+			return dictionary.Contains(pair.Value.Identifier);
 		}
 
 		public bool ContainsKey(string identifier) {
@@ -114,8 +115,9 @@ namespace StardewConfigFramework {
 			return true;
 		}
 
-		public bool Remove(KeyValuePair<string, T> item) {
-			return Remove(item.Value.Identifier);
+		public bool Remove(KeyValuePair<string, T> pair) {
+			CheckKeyValuePair(pair);
+			return Remove(pair.Value.Identifier);
 		}
 
 		public void RemoveAt(int index) {
@@ -138,6 +140,16 @@ namespace StardewConfigFramework {
 
 		IEnumerator<KeyValuePair<string, T>> IEnumerable<KeyValuePair<string, T>>.GetEnumerator() {
 			return dictionary.GetEnumerator() as IEnumerator<KeyValuePair<string, T>>;
+		}
+
+		private void CheckIdentifierAgainstItem(string identifier, T item) {
+			if (identifier != item.Identifier)
+				throw new Exception("Identifier does not match Item's Identifier");
+		}
+
+		private void CheckKeyValuePair(KeyValuePair<string, T> pair) {
+			if (pair.Key != pair.Value.Identifier)
+				throw new Exception("KeyValuePair Key does not match Value's Identifier");
 		}
 	}
 }
