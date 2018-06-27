@@ -51,11 +51,12 @@
     <Compile Include="TestObjects\TestConfigMenu.cs" />
     <Compile Include="OptionTabTests.cs" />
     <Compile Include="OrderedIdentifierDictionaryTests.cs" />
-    <Compile Include="SelectionTests.cs" />
+    <Compile Include="OptionModelTests\SelectionTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="TestObjects\" />
     <Folder Include="OptionModelTests\" />
+    <Folder Include="Stories\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
