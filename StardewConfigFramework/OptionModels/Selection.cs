@@ -4,15 +4,15 @@ using System.Collections.Generic;
 
 namespace StardewConfigFramework.Options {
 
-	public class Selection: ModOption, ISCFOrderedDictionary<SelectionChoice> {
+	public class Selection: ModOption, ISCFOrderedDictionary<ISelectionChoice> {
 		public delegate void Handler(Selection selection);
 		public event Handler SelectionDidChange;
 
-		private readonly SCFOrderedDictionary<SelectionChoice> Choices = new SCFOrderedDictionary<SelectionChoice>();
+		private readonly SCFOrderedDictionary<ISelectionChoice> Choices = new SCFOrderedDictionary<ISelectionChoice>();
 
-		public Selection(string identifier, string labelText, IList<SelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IList<ISelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
-				foreach (SelectionChoice choice in choices) {
+				foreach (ISelectionChoice choice in choices) {
 					Add(choice.Identifier, choice);
 				}
 				CheckValidIndex(defaultSelection);
@@ -20,9 +20,9 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public Selection(string identifier, string labelText, IList<SelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
+		public Selection(string identifier, string labelText, IList<ISelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
-				foreach (SelectionChoice choice in choices) {
+				foreach (ISelectionChoice choice in choices) {
 					Add(choice.Identifier, choice);
 				}
 				CheckValidIdentifier(defaultSelection);
@@ -30,8 +30,8 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public SelectionChoice this[int index] { get => Choices[index]; set => Choices[index] = value; }
-		public SelectionChoice this[string identifier] { get => Choices[identifier]; set => Choices[identifier] = value; }
+		public ISelectionChoice this[int index] { get => Choices[index]; set => Choices[index] = value; }
+		public ISelectionChoice this[string identifier] { get => Choices[identifier]; set => Choices[identifier] = value; }
 
 		public int Count => Choices.Count;
 
@@ -39,7 +39,7 @@ namespace StardewConfigFramework.Options {
 
 		public ICollection<string> Keys => Choices.Keys as ICollection<string>;
 
-		public ICollection<SelectionChoice> Values => Choices.Values as ICollection<SelectionChoice>;
+		public ICollection<ISelectionChoice> Values => Choices.Values as ICollection<ISelectionChoice>;
 
 		private int _SelectedIndex = 0;
 		public int SelectedIndex {
@@ -55,7 +55,7 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public SelectionChoice SelectedChoice => (Choices.Count != 0) ? Choices[SelectedIndex] as SelectionChoice : null;
+		public ISelectionChoice SelectedChoice => (Choices.Count != 0) ? Choices[SelectedIndex] as ISelectionChoice : null;
 
 		public string SelectedIdentifier {
 			get => SelectedChoice?.Identifier;
@@ -83,15 +83,15 @@ namespace StardewConfigFramework.Options {
 				throw new KeyNotFoundException("Identifier does not exist in Choices");
 		}
 
-		public void Add(SelectionChoice choice) {
+		public void Add(ISelectionChoice choice) {
 			Choices.Add(choice.Identifier, choice);
 		}
 
-		public void Add(string identifier, SelectionChoice choice) {
+		public void Add(string identifier, ISelectionChoice choice) {
 			Choices.Add(identifier, choice);
 		}
 
-		public void Add(KeyValuePair<string, SelectionChoice> choice) {
+		public void Add(KeyValuePair<string, ISelectionChoice> choice) {
 			Choices.Add(choice.Key, choice.Value);
 		}
 
@@ -103,11 +103,11 @@ namespace StardewConfigFramework.Options {
 			return Choices.Contains(identifier);
 		}
 
-		public bool Contains(SelectionChoice choice) {
+		public bool Contains(ISelectionChoice choice) {
 			return Choices.Contains(choice.Identifier);
 		}
 
-		public bool Contains(KeyValuePair<string, SelectionChoice> choice) {
+		public bool Contains(KeyValuePair<string, ISelectionChoice> choice) {
 			return Choices.Contains(choice.Key);
 		}
 
@@ -115,11 +115,11 @@ namespace StardewConfigFramework.Options {
 			return Choices.Contains(identifier);
 		}
 
-		public void CopyTo(SelectionChoice[] array, int arrayIndex) {
+		public void CopyTo(ISelectionChoice[] array, int arrayIndex) {
 			Choices.CopyTo(array, arrayIndex);
 		}
 
-		public void CopyTo(KeyValuePair<string, SelectionChoice>[] array, int arrayIndex) {
+		public void CopyTo(KeyValuePair<string, ISelectionChoice>[] array, int arrayIndex) {
 			Choices.CopyTo(array, arrayIndex);
 		}
 
@@ -133,15 +133,15 @@ namespace StardewConfigFramework.Options {
 			return Choices.IndexOf(identifier);
 		}
 
-		public int IndexOf(SelectionChoice choice) {
+		public int IndexOf(ISelectionChoice choice) {
 			return IndexOf(choice.Identifier);
 		}
 
-		public void Insert(int index, SelectionChoice choice) {
+		public void Insert(int index, ISelectionChoice choice) {
 			Choices.Insert(index, choice);
 		}
 
-		public bool Remove(SelectionChoice choice) {
+		public bool Remove(ISelectionChoice choice) {
 			return Choices.Remove(choice);
 		}
 
@@ -149,7 +149,7 @@ namespace StardewConfigFramework.Options {
 			return Choices.Remove(identifier);
 		}
 
-		public bool Remove(KeyValuePair<string, SelectionChoice> choice) {
+		public bool Remove(KeyValuePair<string, ISelectionChoice> choice) {
 			return Remove(choice);
 		}
 
@@ -157,11 +157,11 @@ namespace StardewConfigFramework.Options {
 			Choices.RemoveAt(index);
 		}
 
-		public bool TryGetValue(string identifier, out SelectionChoice choice) {
+		public bool TryGetValue(string identifier, out ISelectionChoice choice) {
 			return Choices.TryGetValue(identifier, out choice);
 		}
 
-		public IEnumerator<SelectionChoice> GetEnumerator() {
+		public IEnumerator<ISelectionChoice> GetEnumerator() {
 			return Choices.GetEnumerator();
 		}
 
@@ -169,12 +169,16 @@ namespace StardewConfigFramework.Options {
 			return Choices.GetEnumerator();
 		}
 
-		IEnumerator<KeyValuePair<string, SelectionChoice>> IEnumerable<KeyValuePair<string, SelectionChoice>>.GetEnumerator() {
-			return ((IDictionary<string, SelectionChoice>) Choices).GetEnumerator();
+		IEnumerator<KeyValuePair<string, ISelectionChoice>> IEnumerable<KeyValuePair<string, ISelectionChoice>>.GetEnumerator() {
+			return ((IDictionary<string, ISelectionChoice>) Choices).GetEnumerator();
 		}
 	}
 
-	public class SelectionChoice: Tuple<string, string, string>, SCFObject {
+	public interface ISelectionChoice: SCFObject {
+		string HoverText { get; }
+	}
+
+	public class SelectionChoice: Tuple<string, string, string>, ISelectionChoice {
 		public SelectionChoice(string identifier, string label, string hoverText = null) : base(identifier, label, hoverText) { }
 		public string Identifier => Item1;
 		public string Label => Item2;

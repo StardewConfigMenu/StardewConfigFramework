@@ -5,14 +5,14 @@ using StardewConfigFramework.Options;
 
 namespace StardewConfigFrameworkTests {
 	[TestFixture()]
-	public class SelectionTests: OrderedIdentifierDictionaryTests<SelectionChoice> {
+	public class SelectionTests: OrderedIdentifierDictionaryTests<ISelectionChoice> {
 
 		private Selection Selection => (Selection) OrdDic;
 
 		[SetUp]
 		public void SetUp() {
 			OrdDic = new Selection("testSelection", "Test Selection");
-			Option = new List<SelectionChoice> {
+			Option = new List<ISelectionChoice> {
 				new SelectionChoice("option0", "Option 0"),
 				new SelectionChoice("option1", "Option 1"),
 				new SelectionChoice("option2", "Option 2"),
@@ -20,7 +20,7 @@ namespace StardewConfigFrameworkTests {
 				new SelectionChoice("option4", "Option 4")
 			};
 
-			DupeOption = new List<SelectionChoice> {
+			DupeOption = new List<ISelectionChoice> {
 				new SelectionChoice("option0", "Dupe Option 0"),
 				new SelectionChoice("option1", "Dupe Option 1"),
 				new SelectionChoice("option2", "Dupe Option 2"),
@@ -65,7 +65,7 @@ namespace StardewConfigFrameworkTests {
 		[Test]
 		public void SetInvalidSelected() {
 
-			var choices = new List<SelectionChoice> {
+			var choices = new List<ISelectionChoice> {
 				Option[0],
 				Option[1],
 				Option[2]
