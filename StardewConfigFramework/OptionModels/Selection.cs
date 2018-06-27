@@ -26,7 +26,7 @@ namespace StardewConfigFramework.Options {
 					Add(choice.Identifier, choice);
 				}
 				CheckValidIdentifier(defaultSelection);
-				_SelectedIdentifier = defaultSelection;
+				_SelectedIndex = IndexOf(defaultSelection);
 			}
 		}
 
