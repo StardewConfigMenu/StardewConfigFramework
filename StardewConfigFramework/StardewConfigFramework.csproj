@@ -63,6 +63,7 @@
     <Compile Include="OptionPackages\TabbedOptionsPackage.cs" />
     <Compile Include="Common\ISCFOrderedDictionary.cs" />
     <Compile Include="Common\SCFOrderedDictionaryEnumerator.cs" />
+    <Compile Include="OptionModels\QuantizedRange.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
