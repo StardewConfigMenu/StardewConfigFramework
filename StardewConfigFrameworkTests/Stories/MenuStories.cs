@@ -12,7 +12,7 @@ namespace StardewConfigFrameworkTests {
 
 		[Test]
 		public void TestFullMenu() {
-			var testPackage = new SimpleOptionsPackage(Mod);
+			var testPackage = new TabbedOptionsPackage(Mod);
 			Menu.AddOptionsPackage(testPackage);
 
 			Console.Write("package added\n");
@@ -30,7 +30,6 @@ namespace StardewConfigFrameworkTests {
 
 			testTab.Add(choices);
 			testPackage.Add(testTab);
-			Console.Write("choices added\n");
 
 			var packageList = Menu.PackageList;
 
@@ -39,16 +38,13 @@ namespace StardewConfigFrameworkTests {
 					continue;
 
 				var tab = package[0];
-				Console.Write("package not empty\n");
 
 				Assert.Multiple(() => {
 					Assert.Greater(tab.Count, 0);
-					Console.Write("About to enter Loop. Count: " + tab.Count.ToString() + "\n");
 
 					foreach (ModOption option in tab) {
-						Console.Write("Trying to get Type\n");
 						Type t = option.GetType();
-						Console.Write("Got Type\n");
+						Assert.IsNotNull(t);
 
 						if (t.Equals(typeof(CategoryLabel)))
 							Assert.AreEqual(option.Identifier, "option0");
