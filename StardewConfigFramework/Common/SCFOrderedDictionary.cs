@@ -23,13 +23,13 @@ namespace StardewConfigFramework {
 			}
 		}
 
-		public int Count => dictionary.Count;
-
 		public bool IsReadOnly => false;
 
 		public ICollection<string> Keys => dictionary.Keys as ICollection<string>;
 
 		public ICollection<T> Values => dictionary.Values as ICollection<T>;
+
+		public int Count => dictionary.Count;
 
 		public void Add(T item) {
 			dictionary.Add(item.Identifier, item);

@@ -7,11 +7,12 @@ namespace StardewConfigFrameworkTests {
 	[TestFixture()]
 	public class SelectionTests: OrderedIdentifierDictionaryTests<ISelectionChoice> {
 
-		private Selection Selection => (Selection) OrdDic;
+		private Selection Selection;
 
 		[SetUp]
 		public void SetUp() {
-			OrdDic = new Selection("testSelection", "Test Selection");
+			Selection = new Selection("testSelection", "Test Selection");
+			OrdDic = Selection.Choices;
 			Option = new List<ISelectionChoice> {
 				new SelectionChoice("option0", "Option 0"),
 				new SelectionChoice("option1", "Option 1"),
@@ -31,6 +32,7 @@ namespace StardewConfigFrameworkTests {
 
 		[TearDown]
 		public void TearDown() {
+			Selection = null;
 			OrdDic = null;
 			Option = null;
 			DupeOption = null;
@@ -53,7 +55,7 @@ namespace StardewConfigFrameworkTests {
 
 			var selection = new Selection("test", "Test");
 
-			selection.Add(Option[0]);
+			selection.Choices.Add(Option[0]);
 
 			Assert.Multiple(() => {
 				Assert.AreEqual(selection.SelectedIndex, 0);
@@ -117,7 +119,7 @@ namespace StardewConfigFrameworkTests {
 				Option[2]
 			};
 
-			Selection.Add(choices);
+			Selection.Choices.Add(choices);
 			var eventDidFire = false;
 			Selection.SelectionDidChange += (option) => {
 				eventDidFire = true;
@@ -139,7 +141,7 @@ namespace StardewConfigFrameworkTests {
 				Option[2]
 			};
 
-			Selection.Add(choices);
+			Selection.Choices.Add(choices);
 			var eventDidFire = false;
 			Selection.SelectionDidChange += (option) => {
 				eventDidFire = true;

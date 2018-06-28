@@ -6,5 +6,8 @@ namespace StardewConfigFramework {
 		int IndexOf(string identifier);
 		bool Contains(string identifier);
 		void Add(IList<T> items);
+		new void Clear();
+		new int Count { get; }
+		new IEnumerator<T> GetEnumerator();
 	}
 }

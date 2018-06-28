@@ -13,8 +13,8 @@ namespace StardewConfigFrameworkTests {
 			var package = new SimpleOptionsPackage(Mod);
 
 			Assert.Multiple(() => {
-				Assert.AreEqual(package.Count, 1);
-				Assert.AreEqual(package[0].Count, 0);
+				Assert.AreEqual(package.Tabs.Count, 1);
+				Assert.AreEqual(package.Tabs[0].Options.Count, 0);
 			});
 		}
 
@@ -23,7 +23,7 @@ namespace StardewConfigFrameworkTests {
 
 			var package = new TabbedOptionsPackage(Mod);
 
-			Assert.AreEqual(package.Count, 0);
+			Assert.AreEqual(package.Tabs.Count, 0);
 		}
 
 		[Test]
@@ -34,8 +34,8 @@ namespace StardewConfigFrameworkTests {
 			package.AddOption(new CategoryLabel(optionID, "Title"));
 
 			Assert.Multiple(() => {
-				Assert.AreEqual(package.Count, 1); // still only 1 tab
-				Assert.AreEqual(package[0].Count, 1);
+				Assert.AreEqual(package.Tabs.Count, 1); // still only 1 tab
+				Assert.AreEqual(package.Tabs[0].Options.Count, 1);
 				Assert.IsInstanceOf<CategoryLabel>(package.GetOption<CategoryLabel>(optionID));
 				Assert.True(package.ContainsOption(optionID));
 				Assert.AreEqual(package.IndexOfOption(optionID), 0);
@@ -54,21 +54,21 @@ namespace StardewConfigFrameworkTests {
 			var tab3 = new OptionsTab("Label3");
 
 			Assert.Multiple(() => {
-				Assert.IsEmpty(package);
-				package.Add(tab1);
-				Assert.AreEqual(package.Count, 1);
-				package.Add(tab2);
-				Assert.AreEqual(package.Count, 2);
-				package.Add(tab1);
-				Assert.AreEqual(package.Count, 3);
-				Assert.AreEqual(package[2].Label, "Label1");
-				package.Insert(0, tab3);
-				Assert.AreEqual(package.Count, 4);
-				Assert.AreEqual(package[0].Label, "Label3");
-				Assert.AreEqual(package[3].Label, "Label1");
-				package.RemoveAt(1);
-				Assert.AreEqual(package.Count, 3);
-				Assert.AreEqual(package.IndexOf(tab1), 2);
+				Assert.IsEmpty(package.Tabs);
+				package.Tabs.Add(tab1);
+				Assert.AreEqual(package.Tabs.Count, 1);
+				package.Tabs.Add(tab2);
+				Assert.AreEqual(package.Tabs.Count, 2);
+				package.Tabs.Add(tab1);
+				Assert.AreEqual(package.Tabs.Count, 3);
+				Assert.AreEqual(package.Tabs[2].Label, "Label1");
+				package.Tabs.Insert(0, tab3);
+				Assert.AreEqual(package.Tabs.Count, 4);
+				Assert.AreEqual(package.Tabs[0].Label, "Label3");
+				Assert.AreEqual(package.Tabs[3].Label, "Label1");
+				package.Tabs.RemoveAt(1);
+				Assert.AreEqual(package.Tabs.Count, 3);
+				Assert.AreEqual(package.Tabs.IndexOf(tab1), 2);
 			});
 		}
 	}
