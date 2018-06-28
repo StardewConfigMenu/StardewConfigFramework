@@ -6,7 +6,7 @@ namespace StardewConfigFramework.Options {
 		void Trigger();
 	}
 
-	public delegate void Handler(Action action);
+	public delegate void ActionHandler(Action action);
 
 	public enum ActionType {
 		OK, SET, CLEAR, DONE, GIFT

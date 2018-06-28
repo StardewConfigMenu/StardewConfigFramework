@@ -3,7 +3,7 @@ namespace StardewConfigFramework.Options {
 
 	public class Action: ModOption, IAction {
 
-		public event Handler ActionWasTriggered;
+		public event ActionHandler ActionWasTriggered;
 
 		public Action(string identifier, string labelText, ActionType type, bool enabled = true) : base(identifier, labelText, enabled) {
 			Type = type;
