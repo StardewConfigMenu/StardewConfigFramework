@@ -10,7 +10,7 @@ namespace StardewConfigFramework.Options {
 		}
 
 		public ActionType _Type;
-		public ActionType Type { get => _Type; set => _Type = value }
+		public ActionType Type { get => _Type; set => _Type = value; }
 
 		public void Trigger() {
 			ActionWasTriggered?.Invoke(this);
