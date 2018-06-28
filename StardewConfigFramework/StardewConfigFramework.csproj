@@ -65,6 +65,7 @@
     <Compile Include="OptionModels\Stepper\Stepper.cs" />
     <Compile Include="OptionModels\Toggle\Toggle.cs" />
     <Compile Include="OptionModels\Action\IAction.cs" />
+    <Compile Include="OptionModels\CategoryLabel\ICategoryLabel.cs" />
     <Compile Include="Common\IModOption.cs" />
   </ItemGroup>
   <ItemGroup />

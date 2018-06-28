@@ -1,5 +1,5 @@
 ﻿using System;
 namespace StardewConfigFramework {
-	public interface ICategoryLabel {
+	public interface ICategoryLabel: SCFObject {
 	}
 }
