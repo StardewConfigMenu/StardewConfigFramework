@@ -1,7 +1,7 @@
 ﻿using System;
 namespace StardewConfigFramework.Options {
 	public interface IAction: IModOption {
-		event Handler ActionWasTriggered;
+		event ActionHandler ActionWasTriggered;
 		ActionType Type { get; set; }
 		void Trigger();
 	}
