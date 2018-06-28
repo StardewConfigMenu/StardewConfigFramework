@@ -2,7 +2,7 @@
 using StardewConfigFramework.Options;
 
 namespace StardewConfigFramework {
-	public abstract class QuantizedRange: ModOption {
+	public abstract class QuantizedRange: ModOption, IQuantizedRange {
 
 		protected QuantizedRange(string identifier, string label, decimal min, decimal max, decimal stepSize, bool enabled = true) : base(identifier, label, enabled) {
 			StepSize = Math.Round(stepSize, 3);
@@ -23,10 +23,6 @@ namespace StardewConfigFramework {
 
 			int stepsAboveMin = (int) ((input - Min) / StepSize);
 			return (stepsAboveMin * StepSize) + Min;
-		}
-
-		public enum DisplayType {
-			NONE, PERCENT
 		}
 	}
 }

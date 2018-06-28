@@ -1,14 +1,13 @@
 using System;
 
 namespace StardewConfigFramework.Options {
-	public class Stepper: QuantizedRange {
-		public delegate void Handler(Stepper stepper);
+	public class Stepper: QuantizedRange, IStepper {
 
-		public event Handler ValueDidChange;
-		readonly public DisplayType Type;
+		public event StepperHandler ValueDidChange;
+		public RangeDisplayType DisplayType { get; }
 
-		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepSize, decimal defaultValue, DisplayType type = DisplayType.NONE, bool enabled = true) : base(identifier, labelText, min, max, stepSize, enabled) {
-			Type = type;
+		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepSize, decimal defaultValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, labelText, min, max, stepSize, enabled) {
+			DisplayType = type;
 			_Value = GetValidInput(Math.Round(defaultValue, 3));
 		}
 

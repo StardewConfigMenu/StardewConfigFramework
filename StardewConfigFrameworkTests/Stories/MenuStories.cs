@@ -19,10 +19,10 @@ namespace StardewConfigFrameworkTests {
 
 			var testTab = new OptionsTab("Tab1");
 
-			var testOptions = new List<ModOption> {
+			var testOptions = new List<IModOption> {
 				new CategoryLabel("option0", "Option 0"),
 				new Selection("option1", "Option 1"),
-				new StardewConfigFramework.Options.Action("option2", "Option 2", StardewConfigFramework.Options.Action.ActionType.OK),
+				new StardewConfigFramework.Options.Action("option2", "Option 2", ButtonType.OK),
 				new Toggle("option3", "Option 3"),
 				new Stepper("option4", "Option 4", 0, 10, 1, 0),
 				new Range("option5", "Option 5", 0, 10, 1, 0, false)

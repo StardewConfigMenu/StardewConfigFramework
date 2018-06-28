@@ -5,7 +5,7 @@ using StardewConfigFramework.Options;
 namespace StardewConfigFramework {
 	public class OptionsTab {
 
-		public readonly ISCFOrderedDictionary<ModOption> Options = new SCFOrderedDictionary<ModOption>();
+		public readonly ISCFOrderedDictionary<IModOption> Options = new SCFOrderedDictionary<IModOption>();
 
 		public OptionsTab(string label) {
 			Label = label;

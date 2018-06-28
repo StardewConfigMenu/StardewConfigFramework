@@ -4,11 +4,10 @@ using System.Collections.Generic;
 
 namespace StardewConfigFramework.Options {
 
-	public class Selection: ModOption {
-		public delegate void Handler(Selection selection);
-		public event Handler SelectionDidChange;
+	public class Selection: ModOption, ISelection {
+		public event SelectionHandler SelectionDidChange;
 
-		public readonly ISCFOrderedDictionary<ISelectionChoice> Choices = new SCFOrderedDictionary<ISelectionChoice>();
+		public ISCFOrderedDictionary<ISelectionChoice> Choices { get; } = new SCFOrderedDictionary<ISelectionChoice>();
 
 		public Selection(string identifier, string labelText, IList<ISelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {

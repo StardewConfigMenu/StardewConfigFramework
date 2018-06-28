@@ -1,11 +1,10 @@
 ﻿using System;
 
 namespace StardewConfigFramework.Options {
-	public class Range: QuantizedRange {
-		public delegate void Handler(Range range);
+	public class Range: QuantizedRange, IRange {
 
-		public event Handler ValueDidChange;
-		readonly public bool ShowValue;
+		public event RangeHandler ValueDidChange;
+		public bool ShowValue { get; }
 
 		public Range(string identifier, string label, decimal min, decimal max, decimal stepSize, decimal defaultValue, bool showValue, bool enabled = true) : base(identifier, label, min, max, stepSize, enabled) {
 			ShowValue = showValue;
