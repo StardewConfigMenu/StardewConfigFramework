@@ -1,6 +1,6 @@
 ﻿
 namespace StardewConfigFramework.Options {
-	public abstract class ModOption: SCFObject {
+	public abstract class ModOption: IModOption {
 		public string Identifier { get; }
 		public string Label { get; set; }
 		public bool Enabled { get; set; }

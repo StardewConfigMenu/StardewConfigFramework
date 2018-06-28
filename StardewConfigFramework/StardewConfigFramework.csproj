@@ -67,6 +67,11 @@
     <Compile Include="OptionModels\Action\IAction.cs" />
     <Compile Include="OptionModels\CategoryLabel\ICategoryLabel.cs" />
     <Compile Include="Common\IModOption.cs" />
+    <Compile Include="OptionModels\Range\IRange.cs" />
+    <Compile Include="OptionModels\IQuantizedRange.cs" />
+    <Compile Include="OptionModels\Stepper\IStepper.cs" />
+    <Compile Include="OptionModels\Toggle\IToggle.cs" />
+    <Compile Include="OptionModels\Selection\ISelection.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

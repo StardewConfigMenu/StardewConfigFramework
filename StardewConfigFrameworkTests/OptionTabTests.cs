@@ -5,14 +5,14 @@ using StardewConfigFramework.Options;
 
 namespace StardewConfigFrameworkTests {
 	[TestFixture]
-	public class OptionTabTests: OrderedIdentifierDictionaryTests<ModOption> {
+	public class OptionTabTests: OrderedIdentifierDictionaryTests<IModOption> {
 
 		private OptionsTab Tab => (OptionsTab) OrdDic;
 
 		[SetUp]
 		public void SetUp() {
 			OrdDic = new OptionsTab("Tab Name").Options;
-			Option = new List<ModOption> {
+			Option = new List<IModOption> {
 				new CategoryLabel("option0", "Option 0"),
 				new CategoryLabel("option1", "Option 1"),
 				new CategoryLabel("option2", "Option 2"),
@@ -20,7 +20,7 @@ namespace StardewConfigFrameworkTests {
 				new CategoryLabel("option4", "Option 4")
 			};
 
-			DupeOption = new List<ModOption> {
+			DupeOption = new List<IModOption> {
 				new CategoryLabel("option0", "Dupe Option 0"),
 				new CategoryLabel("option1", "Dupe Option 1"),
 				new CategoryLabel("option2", "Dupe Option 2"),

@@ -2,13 +2,13 @@
 namespace StardewConfigFramework.Options {
 	public interface IAction: IModOption {
 		event ActionHandler ActionWasTriggered;
-		ActionType Type { get; set; }
+		ButtonType ButtonType { get; set; }
 		void Trigger();
 	}
 
 	public delegate void ActionHandler(Action action);
 
-	public enum ActionType {
+	public enum ButtonType {
 		OK, SET, CLEAR, DONE, GIFT
 	}
 }

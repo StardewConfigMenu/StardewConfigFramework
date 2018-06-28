@@ -5,12 +5,12 @@ namespace StardewConfigFramework.Options {
 
 		public event ActionHandler ActionWasTriggered;
 
-		public Action(string identifier, string labelText, ActionType type, bool enabled = true) : base(identifier, labelText, enabled) {
-			Type = type;
+		public Action(string identifier, string labelText, ButtonType type, bool enabled = true) : base(identifier, labelText, enabled) {
+			ButtonType = type;
 		}
 
-		public ActionType _Type;
-		public ActionType Type { get => _Type; set => _Type = value; }
+		public ButtonType _Type;
+		public ButtonType ButtonType { get => _Type; set => _Type = value; }
 
 		public void Trigger() {
 			ActionWasTriggered?.Invoke(this);

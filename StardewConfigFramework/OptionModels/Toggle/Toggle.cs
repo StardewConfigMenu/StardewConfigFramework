@@ -1,9 +1,8 @@
 ﻿
 namespace StardewConfigFramework.Options {
 
-	public class Toggle: ModOption {
-		public delegate void Handler(Toggle toggle);
-		public event Handler StateDidChange;
+	public class Toggle: ModOption, IToggle {
+		public event ToggleHandler StateDidChange;
 
 		public Toggle(string identifier, string labelText, bool isOn = true, bool enabled = true) : base(identifier, labelText, enabled) {
 			IsOn = isOn;
