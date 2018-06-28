@@ -19,7 +19,7 @@ namespace StardewConfigFrameworkTests {
 
 			var testTab = new OptionsTab("Tab1");
 
-			var choices = new List<ModOption> {
+			var testOptions = new List<ModOption> {
 				new CategoryLabel("option0", "Option 0"),
 				new Selection("option1", "Option 1"),
 				new StardewConfigFramework.Options.Action("option2", "Option 2", StardewConfigFramework.Options.Action.ActionType.OK),
@@ -28,21 +28,21 @@ namespace StardewConfigFrameworkTests {
 				new Range("option5", "Option 5", 0, 10, 1, 0, false)
 			};
 
-			testTab.Add(choices);
-			testPackage.Add(testTab);
+			testTab.Options.Add(testOptions);
+			testPackage.Tabs.Add(testTab);
 
 			var packageList = Menu.PackageList;
 
 			foreach (IOptionsPackage package in packageList) {
-				if (package.Count == 0)
+				if (package.Tabs.Count == 0)
 					continue;
 
-				var tab = package[0];
+				var tab = package.Tabs[0];
 
 				Assert.Multiple(() => {
-					Assert.Greater(tab.Count, 0);
+					Assert.Greater(tab.Options.Count, 0);
 
-					foreach (ModOption option in tab) {
+					foreach (ModOption option in tab.Options) {
 						Type t = option.GetType();
 						Assert.IsNotNull(t);
 

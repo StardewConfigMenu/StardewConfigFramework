@@ -7,14 +7,14 @@ namespace StardewConfigFramework {
 			Tabs.Add(new OptionsTab(""));
 		}
 
-		private OptionsTab OptionList => Tabs[0];
+		private ISCFOrderedDictionary<ModOption> OptionList => Tabs[0].Options;
 
 		public T GetOption<T>(string identifier) where T : ModOption {
-			return OptionList.GetOption<T>(identifier);
+			return Tabs[0].GetOption<T>(identifier);
 		}
 
 		public T GetOption<T>(int index) where T : ModOption {
-			return OptionList.GetOption<T>(index);
+			return Tabs[0].GetOption<T>(index);
 		}
 
 		public ModOption GetOption(string identifier) {

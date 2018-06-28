@@ -11,7 +11,7 @@ namespace StardewConfigFrameworkTests {
 
 		[SetUp]
 		public void SetUp() {
-			OrdDic = new OptionsTab("Tab Name");
+			OrdDic = new OptionsTab("Tab Name").Options;
 			Option = new List<ModOption> {
 				new CategoryLabel("option0", "Option 0"),
 				new CategoryLabel("option1", "Option 1"),
