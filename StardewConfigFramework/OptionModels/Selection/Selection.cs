@@ -77,10 +77,14 @@ namespace StardewConfigFramework.Options {
 		string HoverText { get; }
 	}
 
-	public class SelectionChoice: Tuple<string, string, string>, ISelectionChoice {
-		public SelectionChoice(string identifier, string label, string hoverText = null) : base(identifier, label, hoverText) { }
-		public string Identifier => Item1;
-		public string Label => Item2;
-		public string HoverText => Item3;
+	public class SelectionChoice: ISelectionChoice {
+		public SelectionChoice(string identifier, string label, string hoverText = null) {
+			Identifier = identifier;
+			Label = label;
+			HoverText = hoverText;
+		}
+		public string Identifier { get; }
+		public string Label { get; }
+		public string HoverText { get; }
 	}
 }
