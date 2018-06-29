@@ -6,7 +6,7 @@ namespace StardewConfigFramework.Options {
 		public event RangeHandler ValueDidChange;
 		public bool ShowValue { get; }
 
-		public Range(string identifier, string label, decimal min, decimal max, decimal stepSize, decimal defaultValue, bool showValue, bool enabled = true) : base(identifier, label, min, max, stepSize, enabled) {
+		public Range(string identifier, string label, decimal min, decimal max, decimal stepSize, decimal defaultValue, bool showValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, label, min, max, stepSize, type, enabled) {
 			ShowValue = showValue;
 			_Value = GetValidInput(Math.Round(defaultValue, 3));
 		}

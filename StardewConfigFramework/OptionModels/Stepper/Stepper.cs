@@ -4,10 +4,8 @@ namespace StardewConfigFramework.Options {
 	public class Stepper: QuantizedRange, IStepper {
 
 		public event StepperHandler ValueDidChange;
-		public RangeDisplayType DisplayType { get; }
 
-		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepSize, decimal defaultValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, labelText, min, max, stepSize, enabled) {
-			DisplayType = type;
+		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepSize, decimal defaultValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, labelText, min, max, stepSize, type, enabled) {
 			_Value = GetValidInput(Math.Round(defaultValue, 3));
 		}
 
