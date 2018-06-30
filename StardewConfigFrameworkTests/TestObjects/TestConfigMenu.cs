@@ -7,7 +7,7 @@ namespace StardewConfigFrameworkTests {
 
 		public List<IOptionsPackage> PackageList = new List<IOptionsPackage>();
 
-		public override void AddOptionsPackage(IOptionsPackage package) {
+		public void AddOptionsPackage(IOptionsPackage package) {
 			PackageList.Add(package);
 		}
 	}
