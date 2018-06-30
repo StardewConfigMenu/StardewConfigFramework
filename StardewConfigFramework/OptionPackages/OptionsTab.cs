@@ -7,11 +7,13 @@ namespace StardewConfigFramework {
 
 		public ISCFOrderedDictionary<IConfigOption> Options => new SCFOrderedDictionary<IConfigOption>();
 
+		private string _Label;
+
+		public string Label { get => _Label; set => _Label = value; }
+
 		public OptionsTab(string label) {
 			Label = label;
 		}
-
-		public string Label;
 
 		public T GetOption<T>(string identifier) where T : IConfigOption {
 			return (T) Options[identifier];
