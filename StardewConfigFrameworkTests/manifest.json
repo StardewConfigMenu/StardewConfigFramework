@@ -1,8 +1,0 @@
-{
-    "Name": "Stardew Config Framework Tests",
-    "Author": "Juice805",
-    "Version": "1.1.0",
-    "Description": "Testing package for Stardew Config Framework",
-    "UniqueID": "Juice805.StardewConfigFramework",
-    "EntryDll": "StardewConfigFrameworkTests.dll"
-}
