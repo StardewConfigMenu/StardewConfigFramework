@@ -10,6 +10,7 @@ namespace StardewConfigFramework {
 
 		public IManifest ModManifest { get; private set; }
 
-		public List<IOptionsTab> Tabs => new List<IOptionsTab>();
+		private IList<IOptionsTab> _Tabs = new List<IOptionsTab>();
+		public IList<IOptionsTab> Tabs => _Tabs;
 	}
 }
