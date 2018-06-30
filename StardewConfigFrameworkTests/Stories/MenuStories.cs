@@ -19,13 +19,13 @@ namespace StardewConfigFrameworkTests {
 
 			var testTab = new OptionsTab("Tab1");
 
-			var testOptions = new List<IModOption> {
-				new CategoryLabel("option0", "Option 0"),
-				new Selection("option1", "Option 1"),
-				new StardewConfigFramework.Options.Action("option2", "Option 2", ButtonType.OK),
-				new Toggle("option3", "Option 3"),
-				new Stepper("option4", "Option 4", 0, 10, 1, 0),
-				new Range("option5", "Option 5", 0, 10, 1, 0, false)
+			var testOptions = new List<IConfigOption> {
+				new ConfigHeader("option0", "Option 0"),
+				new ConfigSelection("option1", "Option 1"),
+				new ConfigAction("option2", "Option 2", ButtonType.OK),
+				new ConfigToggle("option3", "Option 3"),
+				new ConfigStepper("option4", "Option 4", 0, 10, 1, 0),
+				new ConfigRange("option5", "Option 5", 0, 10, 1, 0, false)
 			};
 
 			testTab.Options.Add(testOptions);
@@ -42,21 +42,21 @@ namespace StardewConfigFrameworkTests {
 				Assert.Multiple(() => {
 					Assert.Greater(tab.Options.Count, 0);
 
-					foreach (ModOption option in tab.Options) {
+					foreach (ConfigOption option in tab.Options) {
 						Type t = option.GetType();
 						Assert.IsNotNull(t);
 
-						if (t.Equals(typeof(CategoryLabel)))
+						if (t.Equals(typeof(ConfigHeader)))
 							Assert.AreEqual(option.Identifier, "option0");
-						else if (t.Equals(typeof(Selection))) {
+						else if (t.Equals(typeof(ConfigSelection))) {
 							Assert.AreEqual(option.Identifier, "option1");
-						} else if (t.Equals(typeof(Toggle)))
+						} else if (t.Equals(typeof(ConfigToggle)))
 							Assert.AreEqual(option.Identifier, "option3");
-						else if (t.Equals(typeof(StardewConfigFramework.Options.Action)))
+						else if (t.Equals(typeof(ConfigAction)))
 							Assert.AreEqual(option.Identifier, "option2");
-						else if (t.Equals(typeof(Stepper)))
+						else if (t.Equals(typeof(ConfigStepper)))
 							Assert.AreEqual(option.Identifier, "option4");
-						else if (t.Equals(typeof(Range)))
+						else if (t.Equals(typeof(ConfigRange)))
 							Assert.AreEqual(option.Identifier, "option5");
 					}
 				});

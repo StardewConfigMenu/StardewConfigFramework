@@ -7,11 +7,11 @@ namespace StardewConfigFrameworkTests {
 	[TestFixture()]
 	public class SelectionTests: OrderedIdentifierDictionaryTests<ISelectionChoice> {
 
-		private Selection Selection;
+		private ConfigSelection Selection;
 
 		[SetUp]
 		public void SetUp() {
-			Selection = new Selection("testSelection", "Test Selection");
+			Selection = new ConfigSelection("testSelection", "Test Selection");
 			OrdDic = Selection.Choices;
 			Option = new List<ISelectionChoice> {
 				new SelectionChoice("option0", "Option 0"),
@@ -41,7 +41,7 @@ namespace StardewConfigFrameworkTests {
 		[Test]
 		public void EmptyInit() {
 
-			var selection = new Selection("test", "Test");
+			var selection = new ConfigSelection("test", "Test");
 
 			Assert.Multiple(() => {
 				Assert.AreEqual(selection.SelectedIndex, 0);
@@ -53,7 +53,7 @@ namespace StardewConfigFrameworkTests {
 		[Test]
 		public void AddToEmpty() {
 
-			var selection = new Selection("test", "Test");
+			var selection = new ConfigSelection("test", "Test");
 
 			selection.Choices.Add(Option[0]);
 
@@ -73,7 +73,7 @@ namespace StardewConfigFrameworkTests {
 				Option[2]
 			};
 
-			var selection = new Selection("test", "Test", choices);
+			var selection = new ConfigSelection("test", "Test", choices);
 			var eventDidFire = false;
 			selection.SelectionDidChange += (option) => {
 				eventDidFire = true;
@@ -101,7 +101,7 @@ namespace StardewConfigFrameworkTests {
 				Option[2]
 			};
 
-			var selection = new Selection("test", "Test", choices, 2);
+			var selection = new ConfigSelection("test", "Test", choices, 2);
 
 			Assert.Multiple(() => {
 				Assert.AreEqual(selection.SelectedChoice, Option[2]);

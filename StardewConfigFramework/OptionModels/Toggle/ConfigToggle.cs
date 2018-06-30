@@ -1,10 +1,10 @@
 ﻿
 namespace StardewConfigFramework.Options {
 
-	public class Toggle: ModOption, IToggle {
+	public class ConfigToggle: ConfigOption, IConfigToggle {
 		public event ToggleHandler StateDidChange;
 
-		public Toggle(string identifier, string labelText, bool isOn = true, bool enabled = true) : base(identifier, labelText, enabled) {
+		public ConfigToggle(string identifier, string labelText, bool isOn = true, bool enabled = true) : base(identifier, labelText, enabled) {
 			IsOn = isOn;
 		}
 

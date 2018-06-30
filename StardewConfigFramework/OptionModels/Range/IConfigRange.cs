@@ -2,12 +2,12 @@
 using StardewConfigFramework.Options;
 
 namespace StardewConfigFramework.Options {
-	public interface IRange: IQuantizedRange {
+	public interface IConfigRange: IQuantizedRange {
 		event RangeHandler ValueDidChange;
 		bool ShowValue { get; }
 		decimal Value { get; set; }
 	}
 
-	public delegate void RangeHandler(Range range);
+	public delegate void RangeHandler(IConfigRange range);
 
 }

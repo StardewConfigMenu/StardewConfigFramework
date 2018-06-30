@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace StardewConfigFramework.Options {
 
-	public class Selection: ModOption, ISelection {
+	public class ConfigSelection: ConfigOption, IConfigSelection {
 		public event SelectionHandler SelectionDidChange;
 
-		public ISCFOrderedDictionary<ISelectionChoice> Choices { get; } = new SCFOrderedDictionary<ISelectionChoice>();
+		public ISCFOrderedDictionary<ISelectionChoice> Choices => new SCFOrderedDictionary<ISelectionChoice>();
 
-		public Selection(string identifier, string labelText, IList<ISelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
+		public ConfigSelection(string identifier, string labelText, IList<ISelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
 				foreach (ISelectionChoice choice in choices) {
 					Choices.Add(choice);
@@ -20,7 +20,7 @@ namespace StardewConfigFramework.Options {
 			}
 		}
 
-		public Selection(string identifier, string labelText, IList<ISelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
+		public ConfigSelection(string identifier, string labelText, IList<ISelectionChoice> choices, string defaultSelection, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {
 				foreach (ISelectionChoice choice in choices) {
 					Choices.Add(choice);

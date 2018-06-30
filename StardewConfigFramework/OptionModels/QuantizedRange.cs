@@ -2,7 +2,7 @@ using System;
 using StardewConfigFramework.Options;
 
 namespace StardewConfigFramework {
-	public abstract class QuantizedRange: ModOption, IQuantizedRange {
+	public abstract class QuantizedRange: ConfigOption, IQuantizedRange {
 
 		protected QuantizedRange(string identifier, string label, decimal min, decimal max, decimal stepSize, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, label, enabled) {
 			StepSize = Math.Round(stepSize, 3);
