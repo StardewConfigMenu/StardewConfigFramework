@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>StardewConfigFrameworkTests</RootNamespace>
     <AssemblyName>StardewConfigFrameworkTests</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <ReleaseVersion></ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
