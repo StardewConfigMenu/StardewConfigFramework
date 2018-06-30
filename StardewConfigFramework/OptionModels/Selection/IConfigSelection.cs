@@ -1,6 +1,6 @@
 ﻿using System;
 namespace StardewConfigFramework.Options {
-	public interface ISelection: IModOption {
+	public interface IConfigSelection: IConfigOption {
 		event SelectionHandler SelectionDidChange;
 		ISCFOrderedDictionary<ISelectionChoice> Choices { get; }
 		int SelectedIndex { get; set; }
@@ -8,5 +8,5 @@ namespace StardewConfigFramework.Options {
 		ISelectionChoice SelectedChoice { get; }
 	}
 
-	public delegate void SelectionHandler(Selection selection);
+	public delegate void SelectionHandler(IConfigSelection selection);
 }

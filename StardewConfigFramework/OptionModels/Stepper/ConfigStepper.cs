@@ -1,11 +1,11 @@
 using System;
 
 namespace StardewConfigFramework.Options {
-	public class Stepper: QuantizedRange, IStepper {
+	public class ConfigStepper: QuantizedRange, IConfigStepper {
 
 		public event StepperHandler ValueDidChange;
 
-		public Stepper(string identifier, string labelText, decimal min, decimal max, decimal stepSize, decimal defaultValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, labelText, min, max, stepSize, type, enabled) {
+		public ConfigStepper(string identifier, string labelText, decimal min, decimal max, decimal stepSize, decimal defaultValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, labelText, min, max, stepSize, type, enabled) {
 			_Value = GetValidInput(Math.Round(defaultValue, 3));
 		}
 

@@ -7,21 +7,21 @@ namespace StardewConfigFramework {
 			Tabs.Add(new OptionsTab(""));
 		}
 
-		private ISCFOrderedDictionary<IModOption> OptionList => Tabs[0].Options;
+		private ISCFOrderedDictionary<IConfigOption> OptionList => Tabs[0].Options;
 
-		public T GetOption<T>(string identifier) where T : ModOption {
+		public T GetOption<T>(string identifier) where T : ConfigOption {
 			return Tabs[0].GetOption<T>(identifier);
 		}
 
-		public T GetOption<T>(int index) where T : ModOption {
+		public T GetOption<T>(int index) where T : ConfigOption {
 			return Tabs[0].GetOption<T>(index);
 		}
 
-		public IModOption GetOption(string identifier) {
+		public IConfigOption GetOption(string identifier) {
 			return OptionList[identifier];
 		}
 
-		public IModOption GetOption(int index) {
+		public IConfigOption GetOption(int index) {
 			return OptionList[index];
 		}
 
@@ -29,11 +29,11 @@ namespace StardewConfigFramework {
 			return OptionList.IndexOf(identifier);
 		}
 
-		public void AddOption(IModOption option) {
+		public void AddOption(IConfigOption option) {
 			OptionList.Add(option);
 		}
 
-		public void InsertOption(int index, IModOption option) {
+		public void InsertOption(int index, IConfigOption option) {
 			OptionList.Insert(index, option);
 		}
 

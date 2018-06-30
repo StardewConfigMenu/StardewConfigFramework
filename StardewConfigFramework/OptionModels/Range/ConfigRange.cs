@@ -1,12 +1,12 @@
 ﻿using System;
 
 namespace StardewConfigFramework.Options {
-	public class Range: QuantizedRange, IRange {
+	public class ConfigRange: QuantizedRange, IConfigRange {
 
 		public event RangeHandler ValueDidChange;
 		public bool ShowValue { get; }
 
-		public Range(string identifier, string label, decimal min, decimal max, decimal stepSize, decimal defaultValue, bool showValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, label, min, max, stepSize, type, enabled) {
+		public ConfigRange(string identifier, string label, decimal min, decimal max, decimal stepSize, decimal defaultValue, bool showValue, RangeDisplayType type = RangeDisplayType.DEFAULT, bool enabled = true) : base(identifier, label, min, max, stepSize, type, enabled) {
 			ShowValue = showValue;
 			_Value = GetValidInput(Math.Round(defaultValue, 3));
 		}

@@ -31,17 +31,17 @@ namespace StardewConfigFrameworkTests {
 
 			var package = new SimpleOptionsPackage(Mod);
 			var optionID = "label";
-			package.AddOption(new CategoryLabel(optionID, "Title"));
+			package.AddOption(new ConfigHeader(optionID, "Title"));
 
 			Assert.Multiple(() => {
 				Assert.AreEqual(package.Tabs.Count, 1); // still only 1 tab
 				Assert.AreEqual(package.Tabs[0].Options.Count, 1);
-				Assert.IsInstanceOf<CategoryLabel>(package.GetOption<CategoryLabel>(optionID));
+				Assert.IsInstanceOf<ConfigHeader>(package.GetOption<ConfigHeader>(optionID));
 				Assert.True(package.ContainsOption(optionID));
 				Assert.AreEqual(package.IndexOfOption(optionID), 0);
 				Assert.True(package.RemoveOption(optionID));
 				Assert.False(package.ContainsOption(optionID));
-				Assert.Null(package.GetOption<CategoryLabel>(optionID));
+				Assert.Null(package.GetOption<ConfigHeader>(optionID));
 			});
 		}
 

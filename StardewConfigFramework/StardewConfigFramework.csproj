@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IConfigMenu.cs" />
-    <Compile Include="OptionModels\ModOption.cs" />
+    <Compile Include="OptionModels\ConfigOption.cs" />
     <Compile Include="OptionsTab.cs" />
     <Compile Include="Common\SCFOrderedDictionary.cs" />
     <Compile Include="Common\SCFObject.cs" />
@@ -60,20 +60,20 @@
     <Compile Include="Common\ISCFOrderedDictionary.cs" />
     <Compile Include="Common\SCFOrderedDictionaryEnumerator.cs" />
     <Compile Include="OptionModels\QuantizedRange.cs" />
-    <Compile Include="OptionModels\Action\Action.cs" />
-    <Compile Include="OptionModels\CategoryLabel\CategoryLabel.cs" />
-    <Compile Include="OptionModels\Range\Range.cs" />
-    <Compile Include="OptionModels\Selection\Selection.cs" />
-    <Compile Include="OptionModels\Stepper\Stepper.cs" />
-    <Compile Include="OptionModels\Toggle\Toggle.cs" />
-    <Compile Include="OptionModels\Action\IAction.cs" />
-    <Compile Include="OptionModels\CategoryLabel\ICategoryLabel.cs" />
-    <Compile Include="Common\IModOption.cs" />
-    <Compile Include="OptionModels\Range\IRange.cs" />
+    <Compile Include="OptionModels\Action\ConfigAction.cs" />
+    <Compile Include="OptionModels\CategoryLabel\ConfigHeader.cs" />
+    <Compile Include="OptionModels\Range\ConfigRange.cs" />
+    <Compile Include="OptionModels\Selection\ConfigSelection.cs" />
+    <Compile Include="OptionModels\Stepper\ConfigStepper.cs" />
+    <Compile Include="OptionModels\Toggle\ConfigToggle.cs" />
+    <Compile Include="OptionModels\Action\IConfigAction.cs" />
+    <Compile Include="OptionModels\CategoryLabel\IConfigHeader.cs" />
+    <Compile Include="Common\IConfigOption.cs" />
+    <Compile Include="OptionModels\Range\IConfigRange.cs" />
     <Compile Include="OptionModels\IQuantizedRange.cs" />
-    <Compile Include="OptionModels\Stepper\IStepper.cs" />
-    <Compile Include="OptionModels\Toggle\IToggle.cs" />
-    <Compile Include="OptionModels\Selection\ISelection.cs" />
+    <Compile Include="OptionModels\Stepper\IConfigStepper.cs" />
+    <Compile Include="OptionModels\Toggle\IConfigToggle.cs" />
+    <Compile Include="OptionModels\Selection\IConfigSelection.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

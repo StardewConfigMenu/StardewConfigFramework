@@ -1,6 +1,6 @@
 using System;
 namespace StardewConfigFramework.Options {
-	public interface IQuantizedRange: IModOption {
+	public interface IQuantizedRange: IConfigOption {
 		decimal StepSize { get; }
 		decimal Max { get; }
 		decimal Min { get; }

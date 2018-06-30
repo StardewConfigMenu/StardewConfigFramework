@@ -1,11 +1,11 @@
 ﻿
 namespace StardewConfigFramework.Options {
 
-	public class Action: ModOption, IAction {
+	public class ConfigAction: ConfigOption, IConfigAction {
 
 		public event ActionHandler ActionWasTriggered;
 
-		public Action(string identifier, string labelText, ButtonType type, bool enabled = true) : base(identifier, labelText, enabled) {
+		public ConfigAction(string identifier, string labelText, ButtonType type, bool enabled = true) : base(identifier, labelText, enabled) {
 			ButtonType = type;
 		}
 

@@ -5,7 +5,7 @@ using StardewConfigFramework.Options;
 namespace StardewConfigFramework {
 	public class OptionsTab {
 
-		public readonly ISCFOrderedDictionary<IModOption> Options = new SCFOrderedDictionary<IModOption>();
+		public readonly ISCFOrderedDictionary<IConfigOption> Options = new SCFOrderedDictionary<IConfigOption>();
 
 		public OptionsTab(string label) {
 			Label = label;
@@ -13,11 +13,11 @@ namespace StardewConfigFramework {
 
 		public string Label;
 
-		public T GetOption<T>(string identifier) where T : ModOption {
+		public T GetOption<T>(string identifier) where T : ConfigOption {
 			return Options[identifier] as T;
 		}
 
-		public T GetOption<T>(int index) where T : ModOption {
+		public T GetOption<T>(int index) where T : ConfigOption {
 			return Options[index] as T;
 		}
 	}
