@@ -50,7 +50,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IConfigMenu.cs" />
     <Compile Include="OptionModels\ConfigOption.cs" />
-    <Compile Include="OptionsTab.cs" />
     <Compile Include="Common\SCFOrderedDictionary.cs" />
     <Compile Include="Common\SCFObject.cs" />
     <Compile Include="OptionPackages\IOptionsPackage.cs" />
@@ -68,12 +67,14 @@
     <Compile Include="OptionModels\Toggle\ConfigToggle.cs" />
     <Compile Include="OptionModels\Action\IConfigAction.cs" />
     <Compile Include="OptionModels\CategoryLabel\IConfigHeader.cs" />
-    <Compile Include="Common\IConfigOption.cs" />
     <Compile Include="OptionModels\Range\IConfigRange.cs" />
     <Compile Include="OptionModels\IQuantizedRange.cs" />
     <Compile Include="OptionModels\Stepper\IConfigStepper.cs" />
     <Compile Include="OptionModels\Toggle\IConfigToggle.cs" />
     <Compile Include="OptionModels\Selection\IConfigSelection.cs" />
+    <Compile Include="OptionPackages\OptionsTab.cs" />
+    <Compile Include="OptionPackages\IOptionsTab.cs" />
+    <Compile Include="OptionModels\IConfigOption.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

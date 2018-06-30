@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using StardewConfigFramework.Options;
 
 namespace StardewConfigFramework {
-	public class OptionsTab {
+	public class OptionsTab: IOptionsTab {
 
 		public readonly ISCFOrderedDictionary<IConfigOption> Options = new SCFOrderedDictionary<IConfigOption>();
 
