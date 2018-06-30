@@ -22,6 +22,7 @@
     <PackageTags>Stardew Valley Config Menu Options</PackageTags>
     <Title>StardewConfigFramework</Title>
     <SynchReleaseVersion>false</SynchReleaseVersion>
+    <EnableModZip>False</EnableModZip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
