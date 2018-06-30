@@ -13,12 +13,12 @@ namespace StardewConfigFramework {
 
 		public string Label;
 
-		public T GetOption<T>(string identifier) where T : ConfigOption {
-			return Options[identifier] as T;
+		public T GetOption<T>(string identifier) where T : IConfigOption {
+			return (T) Options[identifier];
 		}
 
-		public T GetOption<T>(int index) where T : ConfigOption {
-			return Options[index] as T;
+		public T GetOption<T>(int index) where T : IConfigOption {
+			return (T) Options[index];
 		}
 	}
 }

@@ -9,11 +9,11 @@ namespace StardewConfigFramework {
 
 		private ISCFOrderedDictionary<IConfigOption> OptionList => Tabs[0].Options;
 
-		public T GetOption<T>(string identifier) where T : ConfigOption {
+		public T GetOption<T>(string identifier) where T : IConfigOption {
 			return Tabs[0].GetOption<T>(identifier);
 		}
 
-		public T GetOption<T>(int index) where T : ConfigOption {
+		public T GetOption<T>(int index) where T : IConfigOption {
 			return Tabs[0].GetOption<T>(index);
 		}
 
