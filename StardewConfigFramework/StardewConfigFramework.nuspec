@@ -15,7 +15,7 @@
     <tags>Stardew Valley Config Menu</tags>
   </metadata>
   <files>
-    <file src="../README.md" target="content/README.md"/>
+    <file src="../README.md" target="README.md"/>
     <file src="bin/Release/StardewConfigFramework.dll" target="lib/scf/StardewConfigFramework.dll"/>
   </files>
 </package>
