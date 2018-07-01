@@ -2,10 +2,10 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>$version$</version>
+    <version>$packageVersion$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>$authors$</authors>
+    <owners>$authors$</owners>
     <projectUrl>https://github.com/Juice805/StardewConfigMenu</projectUrl>
     <iconUrl>https://github.com/Juice805/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,6 +16,6 @@
   </metadata>
   <files>
     <file src="../README.md" target="content/README.md"/>
-    <file src="bin/Debug/StardewConfigFramework.dll" target="content/README.md"/>
+    <file src="bin/Debug/StardewConfigFramework.dll" target="lib/StardewConfigFramework.dll"/>
   </files>
 </package>
