@@ -10,12 +10,12 @@
     <iconUrl>https://github.com/Juice805/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial Release v0.7.1</releaseNotes>
+    <releaseNotes>Completely refactored and cleaned up framework.</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Stardew Valley Config Menu</tags>
   </metadata>
   <files>
     <file src="../README.md" target="content/README.md"/>
-    <file src="bin/Debug/StardewConfigFramework.dll" target="lib/StardewConfigFramework.dll"/>
+    <file src="bin/Release/StardewConfigFramework.dll" target="lib/scf/StardewConfigFramework.dll"/>
   </files>
 </package>

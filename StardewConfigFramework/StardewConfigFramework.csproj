@@ -9,7 +9,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <PackageVersion>2.0.0-beta.1</PackageVersion>
     <Authors>Juice805</Authors>
-    <Description>A Unified Mod Options Page For Modders &amp; Users. Keep all your mod settings in one place!</Description>
+    <Description>A Unified Mod Options Page For Modders and Users. Keep all your mod settings in one place!</Description>
     <ReleaseVersion>2.0.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Juice805.StardewConfigFramework</PackageId>
@@ -17,7 +17,7 @@
     <Owners>Juice805</Owners>
     <PackageProjectUrl>https://github.com/StardewConfigFramework/StardewConfigFramework</PackageProjectUrl>
     <PackageReleaseNotes>Beta version of the refactored framework</PackageReleaseNotes>
-    <Summary>A Unified Mod Options Page For Modders &amp; Users. Keep all your mod settings in one place!</Summary>
+    <Summary>A Unified Mod Options Page For Modders and Users. Keep all your mod settings in one place!</Summary>
     <PackageTags>Stardew Valley Config Menu Options</PackageTags>
     <Title>StardewConfigFramework</Title>
     <SynchReleaseVersion>false</SynchReleaseVersion>
