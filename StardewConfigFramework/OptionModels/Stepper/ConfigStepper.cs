@@ -22,25 +22,21 @@ namespace StardewConfigFramework.Options {
 		}
 
 		public void StepUp() {
-			if (!CanStepUp())
+			if (!CanStepUp)
 				return;
 
 			Value += StepSize;
 		}
 
 		public void StepDown() {
-			if (!CanStepDown())
+			if (!CanStepDown)
 				return;
 
 			Value -= StepSize;
 		}
 
-		public bool CanStepUp() {
-			return Value + StepSize <= Max;
-		}
+		public bool CanStepUp => Value + StepSize <= Max;
 
-		public bool CanStepDown() {
-			return Value - StepSize >= Min;
-		}
+		public bool CanStepDown => Value - StepSize >= Min;
 	}
 }
