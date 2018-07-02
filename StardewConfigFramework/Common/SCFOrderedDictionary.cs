@@ -8,14 +8,14 @@ namespace StardewConfigFramework {
 
 		protected readonly OrderedDictionary dictionary = new OrderedDictionary();
 
-		public event OrderedDictionaryContentsDidChange DidChange;
+		public event OrderedDictionaryContentsDidChange ContentsDidChange;
 
 		public T this[int index] {
 			get => (T) dictionary[index];
 			set {
 				RemoveAt(index);
 				Insert(index, value);
-				DidChange?.Invoke();
+				ContentsDidChange?.Invoke();
 			}
 		}
 		public T this[string identifier] {
@@ -23,7 +23,7 @@ namespace StardewConfigFramework {
 			set {
 				CheckIdentifierAgainstItem(identifier, value);
 				dictionary[identifier] = value;
-				DidChange?.Invoke();
+				ContentsDidChange?.Invoke();
 			}
 		}
 
@@ -37,31 +37,31 @@ namespace StardewConfigFramework {
 
 		public void Add(T item) {
 			dictionary.Add(item.Identifier, item);
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public void Add(string identifier, T item) {
 			CheckIdentifierAgainstItem(identifier, item);
 			dictionary.Add(identifier, item);
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public void Add(KeyValuePair<string, T> pair) {
 			CheckKeyValuePair(pair);
 			dictionary.Add(pair.Value.Identifier, pair.Value);
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public void Add(IList<T> items) {
 			foreach (T item in items) {
 				Add(item);
 			}
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public void Clear() {
 			dictionary.Clear();
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public bool Contains(string identifier) {
@@ -116,13 +116,13 @@ namespace StardewConfigFramework {
 
 		public void Insert(int index, T item) {
 			dictionary.Insert(index, item.Identifier, item);
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public bool Remove(T item) {
 			var didRemove = Remove(item.Identifier);
 			if (didRemove) {
-				DidChange?.Invoke();
+				ContentsDidChange?.Invoke();
 			}
 			return didRemove;
 		}
@@ -132,7 +132,7 @@ namespace StardewConfigFramework {
 				return false;
 
 			dictionary.Remove(identifier);
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 			return true;
 		}
 
@@ -141,14 +141,14 @@ namespace StardewConfigFramework {
 			var didRemove = Remove(pair.Value.Identifier);
 
 			if (didRemove) {
-				DidChange?.Invoke();
+				ContentsDidChange?.Invoke();
 			}
 			return didRemove;
 		}
 
 		public void RemoveAt(int index) {
 			dictionary.RemoveAt(index);
-			DidChange?.Invoke();
+			ContentsDidChange?.Invoke();
 		}
 
 		public bool TryGetValue(string identifier, out T value) {
