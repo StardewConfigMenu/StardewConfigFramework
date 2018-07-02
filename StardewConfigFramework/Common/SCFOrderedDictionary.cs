@@ -8,11 +8,14 @@ namespace StardewConfigFramework {
 
 		protected readonly OrderedDictionary dictionary = new OrderedDictionary();
 
+		public event OrderedDictionaryContentsDidChange DidChange;
+
 		public T this[int index] {
 			get => (T) dictionary[index];
 			set {
 				RemoveAt(index);
 				Insert(index, value);
+				DidChange?.Invoke();
 			}
 		}
 		public T this[string identifier] {
@@ -20,6 +23,7 @@ namespace StardewConfigFramework {
 			set {
 				CheckIdentifierAgainstItem(identifier, value);
 				dictionary[identifier] = value;
+				DidChange?.Invoke();
 			}
 		}
 
@@ -33,26 +37,31 @@ namespace StardewConfigFramework {
 
 		public void Add(T item) {
 			dictionary.Add(item.Identifier, item);
+			DidChange?.Invoke();
 		}
 
 		public void Add(string identifier, T item) {
 			CheckIdentifierAgainstItem(identifier, item);
 			dictionary.Add(identifier, item);
+			DidChange?.Invoke();
 		}
 
 		public void Add(KeyValuePair<string, T> pair) {
 			CheckKeyValuePair(pair);
 			dictionary.Add(pair.Value.Identifier, pair.Value);
+			DidChange?.Invoke();
 		}
 
 		public void Add(IList<T> items) {
 			foreach (T item in items) {
 				Add(item);
 			}
+			DidChange?.Invoke();
 		}
 
 		public void Clear() {
 			dictionary.Clear();
+			DidChange?.Invoke();
 		}
 
 		public bool Contains(string identifier) {
@@ -107,10 +116,15 @@ namespace StardewConfigFramework {
 
 		public void Insert(int index, T item) {
 			dictionary.Insert(index, item.Identifier, item);
+			DidChange?.Invoke();
 		}
 
 		public bool Remove(T item) {
-			return Remove(item.Identifier);
+			var didRemove = Remove(item.Identifier);
+			if (didRemove) {
+				DidChange?.Invoke();
+			}
+			return didRemove;
 		}
 
 		public bool Remove(string identifier) {
@@ -118,16 +132,23 @@ namespace StardewConfigFramework {
 				return false;
 
 			dictionary.Remove(identifier);
+			DidChange?.Invoke();
 			return true;
 		}
 
 		public bool Remove(KeyValuePair<string, T> pair) {
 			CheckKeyValuePair(pair);
-			return Remove(pair.Value.Identifier);
+			var didRemove = Remove(pair.Value.Identifier);
+
+			if (didRemove) {
+				DidChange?.Invoke();
+			}
+			return didRemove;
 		}
 
 		public void RemoveAt(int index) {
 			dictionary.RemoveAt(index);
+			DidChange?.Invoke();
 		}
 
 		public bool TryGetValue(string identifier, out T value) {
