@@ -9,8 +9,8 @@ namespace StardewConfigFramework {
 		new void Clear();
 		new int Count { get; }
 		new IEnumerator<T> GetEnumerator();
-		event OrderedDictionaryContentsDidChange ContentsDidChange;
+		event OrderedDictionaryContentsDidChange<T> ContentsDidChange;
 	}
 
-	public delegate void OrderedDictionaryContentsDidChange();
+	public delegate void OrderedDictionaryContentsDidChange<T>(ISCFOrderedDictionary<T> orderedDictionary) where T : SCFObject;
 }
