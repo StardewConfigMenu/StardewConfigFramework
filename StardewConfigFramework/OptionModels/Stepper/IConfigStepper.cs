@@ -5,6 +5,8 @@ namespace StardewConfigFramework.Options {
 		decimal Value { get; set; }
 		void StepUp();
 		void StepDown();
+		bool CanStepUp();
+		bool CanStepDown();
 	}
 
 	public delegate void StepperHandler(IConfigStepper stepper);

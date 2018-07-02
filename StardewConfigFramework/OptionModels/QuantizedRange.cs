@@ -17,13 +17,14 @@ namespace StardewConfigFramework {
 		public decimal Min { get; }
 
 		protected decimal GetValidInput(decimal input) {
-			if (input > Max)
+			var rounded = Math.Round(input, 3);
+			if (rounded > Max)
 				return Max;
 
-			if (input < Min)
+			if (rounded < Min)
 				return Min;
 
-			int stepsAboveMin = (int) ((input - Min) / StepSize);
+			int stepsAboveMin = (int) ((rounded - Min) / StepSize);
 			return (stepsAboveMin * StepSize) + Min;
 		}
 	}
