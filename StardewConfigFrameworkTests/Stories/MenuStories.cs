@@ -17,7 +17,7 @@ namespace StardewConfigFrameworkTests {
 
 			Console.Write("package added\n");
 
-			var testTab = new OptionsTab("Tab1");
+			var testTab = new OptionsTab("tab1", "Tab1");
 
 			var testOptions = new List<IConfigOption> {
 				new ConfigHeader("option0", "Option 0"),

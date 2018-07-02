@@ -4,7 +4,7 @@ using StardewModdingAPI;
 namespace StardewConfigFramework {
 	public class SimpleOptionsPackage: BaseOptionPackage {
 		public SimpleOptionsPackage(IMod mod) : base(mod) {
-			Tabs.Add(new OptionsTab(""));
+			Tabs.Add(new OptionsTab("main", "Main"));
 		}
 
 		private ISCFOrderedDictionary<IConfigOption> OptionList => Tabs[0].Options;

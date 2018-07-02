@@ -11,7 +11,7 @@ namespace StardewConfigFrameworkTests {
 
 		[SetUp]
 		public void SetUp() {
-			OrdDic = new OptionsTab("Tab Name").Options;
+			OrdDic = new OptionsTab("tabID", "Tab Name").Options;
 			Option = new List<IConfigOption> {
 				new ConfigHeader("option0", "Option 0"),
 				new ConfigHeader("option1", "Option 1"),

@@ -12,8 +12,13 @@ namespace StardewConfigFramework {
 
 		public string Label { get => _Label; set => _Label = value; }
 
-		public OptionsTab(string label) {
-			Label = label;
+		private string _Identifier;
+
+		public string Identifier => _Identifier;
+
+		public OptionsTab(string identifier, string label) {
+			_Identifier = identifier;
+			_Label = label;
 		}
 
 		public T GetOption<T>(string identifier) where T : IConfigOption {

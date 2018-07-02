@@ -49,9 +49,9 @@ namespace StardewConfigFrameworkTests {
 		public void TabbedPackageMultipleTabs() {
 
 			var package = new TabbedOptionsPackage(Mod);
-			var tab1 = new OptionsTab("Label1");
-			var tab2 = new OptionsTab("Label2");
-			var tab3 = new OptionsTab("Label3");
+			var tab1 = new OptionsTab("label1", "Label1");
+			var tab2 = new OptionsTab("label2", "Label2");
+			var tab3 = new OptionsTab("label3", "Label3");
 
 			Assert.Multiple(() => {
 				Assert.IsEmpty(package.Tabs);
