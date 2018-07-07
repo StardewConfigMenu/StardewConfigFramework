@@ -6,7 +6,7 @@ Ever want to add a settings menu to your Stardew Valley mod, but didn’t want t
  - [For Contributers](#contributers)
  - [For Modders](#modders)
  - [For Users](#users)
- 
+
 ## Contributers
 
 ### Setup Instructions
@@ -30,11 +30,11 @@ Feel free to submit pull requests. This is my first C# project so it is quite sl
  - [x] Plus/Minus Component
  - [ ] Text Input Component
  - [ ] Keybind Setting Component
- - [ ] More robust testing mods
- - [ ] __CODE CLEANUP/ORGANIZATION__
+ - [x] Unit Tests
+ - [x] __CODE CLEANUP/ORGANIZATION__
  - [ ] Code documentation
  - [x] Complete Wiki
- 
+
 ## Modders
 
 For a walkthrough of how to use the framework in your mods [check out the Wiki](https://github.com/Juice805/StardewConfigFramework/wiki)
@@ -42,7 +42,7 @@ For a walkthrough of how to use the framework in your mods [check out the Wiki](
 ### Requirements
 
  - [SMAPI](https://github.com/Pathoschild/SMAPI/releases)
- 
+
 ### Mods
 
  - None yet! [But you can be the first!](#modders)
@@ -50,7 +50,7 @@ For a walkthrough of how to use the framework in your mods [check out the Wiki](
 ## Users
 
 This repo is for modders to enable StardewConfigMenu support, users generally do not need to worry themselves with the contents of this repo. You may be looking for the [StardewConfigMenu](https://github.com/Juice805/StardewConfigMenu) mod?
- 
+
 ### Credit
 
 The idea and look of the tab comes from [UiModSuite](http://www.nexusmods.com/stardewvalley/mods/1023/?) by [demiacle](https://github.com/demiacle)
