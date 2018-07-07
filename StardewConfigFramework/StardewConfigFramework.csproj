@@ -13,9 +13,9 @@
     <ReleaseVersion>2.0.0</ReleaseVersion>
     <PackOnBuild>true</PackOnBuild>
     <PackageId>Juice805.StardewConfigFramework</PackageId>
-    <PackageIconUrl>https://github.com/StardewConfigFramework/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</PackageIconUrl>
+    <PackageIconUrl>https://github.com/StardewConfigMenu/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</PackageIconUrl>
     <Owners>Juice805</Owners>
-    <PackageProjectUrl>https://github.com/StardewConfigFramework/StardewConfigFramework</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/StardewConfigMenu/StardewConfigFramework</PackageProjectUrl>
     <PackageReleaseNotes>Beta version of the refactored framework</PackageReleaseNotes>
     <Summary>A Unified Mod Options Page For Modders and Users. Keep all your mod settings in one place!</Summary>
     <PackageTags>Stardew Valley Config Menu Options</PackageTags>
