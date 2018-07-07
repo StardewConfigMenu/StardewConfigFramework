@@ -52,6 +52,7 @@ namespace StardewConfigFrameworkTests {
 			var tab1 = new OptionsTab("label1", "Label1");
 			var tab2 = new OptionsTab("label2", "Label2");
 			var tab3 = new OptionsTab("label3", "Label3");
+			var tab4 = new OptionsTab("label4", "Label4");
 
 			Assert.Multiple(() => {
 				Assert.IsEmpty(package.Tabs);
@@ -59,16 +60,17 @@ namespace StardewConfigFrameworkTests {
 				Assert.AreEqual(package.Tabs.Count, 1);
 				package.Tabs.Add(tab2);
 				Assert.AreEqual(package.Tabs.Count, 2);
-				package.Tabs.Add(tab1);
+				package.Tabs.Add(tab4);
 				Assert.AreEqual(package.Tabs.Count, 3);
-				Assert.AreEqual(package.Tabs[2].Label, "Label1");
+				Assert.AreEqual(package.Tabs[2].Label, "Label4");
 				package.Tabs.Insert(0, tab3);
 				Assert.AreEqual(package.Tabs.Count, 4);
 				Assert.AreEqual(package.Tabs[0].Label, "Label3");
-				Assert.AreEqual(package.Tabs[3].Label, "Label1");
+				Assert.AreEqual(package.Tabs[3].Label, "Label4");
 				package.Tabs.RemoveAt(1);
 				Assert.AreEqual(package.Tabs.Count, 3);
-				Assert.AreEqual(package.Tabs.IndexOf(tab1), 2);
+				Assert.AreEqual(-1, package.Tabs.IndexOf(tab1));
+				Assert.AreEqual(1, package.Tabs.IndexOf(tab2));
 			});
 		}
 	}
