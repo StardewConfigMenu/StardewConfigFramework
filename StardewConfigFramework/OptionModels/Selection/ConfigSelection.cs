@@ -7,8 +7,8 @@ namespace StardewConfigFramework.Options {
 	public class ConfigSelection: ConfigOption, IConfigSelection {
 		public event SelectionHandler SelectionDidChange;
 
-		private ISCFOrderedDictionary<ISelectionChoice> _Choices = new SCFOrderedDictionary<ISelectionChoice>();
-		public ISCFOrderedDictionary<ISelectionChoice> Choices => _Choices;
+		private IOrderedDictionary<ISelectionChoice> _Choices = new OrderedDictionary<ISelectionChoice>();
+		public IOrderedDictionary<ISelectionChoice> Choices => _Choices;
 
 		public ConfigSelection(string identifier, string labelText, IList<ISelectionChoice> choices = null, int defaultSelection = 0, bool enabled = true) : base(identifier, labelText, enabled) {
 			if (choices != null) {

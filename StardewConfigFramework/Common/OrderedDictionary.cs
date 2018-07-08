@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 
 namespace StardewConfigFramework {
-	internal class SCFOrderedDictionary<T>: ISCFOrderedDictionary<T> where T : SCFObject {
+	using DefaultOrderedDictionary = System.Collections.Specialized.OrderedDictionary;
 
-		protected readonly OrderedDictionary dictionary = new OrderedDictionary();
+	internal class OrderedDictionary<T>: IOrderedDictionary<T> where T : SCFObject {
+
+		protected readonly DefaultOrderedDictionary dictionary = new DefaultOrderedDictionary();
 
 		public event OrderedDictionaryContentsDidChange<T> ContentsDidChange;
 
