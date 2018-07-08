@@ -1,5 +1,6 @@
 ﻿using System;
-namespace StardewConfigFramework.OptionModels.String {
-	public interface IConfigString {
+namespace StardewConfigFramework.Options {
+	public interface IConfigString: IConfigOption {
+		public string Value { get; set; }
 	}
 }
