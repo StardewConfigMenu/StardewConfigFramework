@@ -23,7 +23,7 @@ namespace StardewConfigFramework.Options {
 
 		private bool _isOn;
 
-		public void Flip() {
+		public void Toggle() {
 			IsOn = !IsOn;
 		}
 	}
