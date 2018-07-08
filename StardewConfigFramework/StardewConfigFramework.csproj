@@ -76,6 +76,7 @@
     <Compile Include="OptionPackages\OptionsTab.cs" />
     <Compile Include="OptionPackages\IOptionsTab.cs" />
     <Compile Include="OptionModels\IConfigOption.cs" />
+    <Compile Include="OptionModels\String\ConfigString.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -90,6 +91,7 @@
     <Folder Include="OptionModels\Selection\" />
     <Folder Include="OptionModels\Stepper\" />
     <Folder Include="OptionModels\Toggle\" />
+    <Folder Include="OptionModels\String\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Pathoschild.Stardew.ModBuildConfig.1.6.0\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="Exists('..\packages\Pathoschild.Stardew.ModBuildConfig.1.6.0\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
