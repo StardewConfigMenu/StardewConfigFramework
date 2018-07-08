@@ -61,13 +61,13 @@
     <Compile Include="Common\SCFOrderedDictionaryEnumerator.cs" />
     <Compile Include="OptionModels\QuantizedRange.cs" />
     <Compile Include="OptionModels\Action\ConfigAction.cs" />
-    <Compile Include="OptionModels\CategoryLabel\ConfigHeader.cs" />
+    <Compile Include="OptionModels\Header\ConfigHeader.cs" />
     <Compile Include="OptionModels\Range\ConfigRange.cs" />
     <Compile Include="OptionModels\Selection\ConfigSelection.cs" />
     <Compile Include="OptionModels\Stepper\ConfigStepper.cs" />
     <Compile Include="OptionModels\Toggle\ConfigToggle.cs" />
     <Compile Include="OptionModels\Action\IConfigAction.cs" />
-    <Compile Include="OptionModels\CategoryLabel\IConfigHeader.cs" />
+    <Compile Include="OptionModels\Header\IConfigHeader.cs" />
     <Compile Include="OptionModels\Range\IConfigRange.cs" />
     <Compile Include="OptionModels\IQuantizedRange.cs" />
     <Compile Include="OptionModels\Stepper\IConfigStepper.cs" />
@@ -85,7 +85,7 @@
     <Folder Include="Common\" />
     <Folder Include="OptionPackages\" />
     <Folder Include="OptionModels\Action\" />
-    <Folder Include="OptionModels\CategoryLabel\" />
+    <Folder Include="OptionModels\Header\" />
     <Folder Include="OptionModels\Range\" />
     <Folder Include="OptionModels\Selection\" />
     <Folder Include="OptionModels\Stepper\" />
