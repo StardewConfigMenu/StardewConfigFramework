@@ -6,7 +6,7 @@ namespace StardewConfigFrameworkTests {
 	[TestFixture]
 	public abstract class OrderedIdentifierDictionaryTests<T>: BaseTestClass where T : SCFObject {
 
-		protected ISCFOrderedDictionary<T> OrdDic;
+		protected IOrderedDictionary<T> OrdDic;
 		protected List<T> Option;
 		protected List<T> DupeOption;
 

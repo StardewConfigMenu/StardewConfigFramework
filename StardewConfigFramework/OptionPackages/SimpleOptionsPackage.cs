@@ -7,7 +7,7 @@ namespace StardewConfigFramework {
 			Tabs.Add(new OptionsTab("main", "Main"));
 		}
 
-		private ISCFOrderedDictionary<IConfigOption> OptionList => Tabs[0].Options;
+		private IOrderedDictionary<IConfigOption> OptionList => Tabs[0].Options;
 
 		public T GetOption<T>(string identifier) where T : IConfigOption {
 			return Tabs[0].GetOption<T>(identifier);

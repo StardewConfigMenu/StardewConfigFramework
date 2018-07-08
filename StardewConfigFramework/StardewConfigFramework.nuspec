@@ -6,8 +6,8 @@
     <title>$title$</title>
     <authors>$authors$</authors>
     <owners>$authors$</owners>
-    <projectUrl>https://github.com/Juice805/StardewConfigMenu</projectUrl>
-    <iconUrl>https://github.com/Juice805/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</iconUrl>
+    <projectUrl>https://github.com/StardewConfigMenu/StardewConfigFramework</projectUrl>
+    <iconUrl>https://github.com/StardewConfigMenu/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Completely refactored and cleaned up framework.</releaseNotes>

@@ -10,7 +10,7 @@ namespace StardewConfigFramework {
 
 		public IManifest ModManifest { get; private set; }
 
-		private ISCFOrderedDictionary<IOptionsTab> _Tabs = new SCFOrderedDictionary<IOptionsTab>();
-		public ISCFOrderedDictionary<IOptionsTab> Tabs => _Tabs;
+		private IOrderedDictionary<IOptionsTab> _Tabs = new OrderedDictionary<IOptionsTab>();
+		public IOrderedDictionary<IOptionsTab> Tabs => _Tabs;
 	}
 }

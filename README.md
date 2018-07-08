@@ -37,7 +37,7 @@ Feel free to submit pull requests. This is my first C# project so it is quite sl
 
 ## Modders
 
-For a walkthrough of how to use the framework in your mods [check out the Wiki](https://github.com/Juice805/StardewConfigFramework/wiki)
+For a walkthrough of how to use the framework in your mods [check out the Wiki](https://github.com/StardewConfigMenu/StardewConfigFramework/wiki)
 
 ### Requirements
 
@@ -49,7 +49,7 @@ For a walkthrough of how to use the framework in your mods [check out the Wiki](
 
 ## Users
 
-This repo is for modders to enable StardewConfigMenu support, users generally do not need to worry themselves with the contents of this repo. You may be looking for the [StardewConfigMenu](https://github.com/Juice805/StardewConfigMenu) mod?
+This repo is for modders to enable StardewConfigMenu support, users generally do not need to worry themselves with the contents of this repo. You may be looking for the [StardewConfigMenu](https://github.com/StardewConfigMenu/StardewConfigMenu) mod?
 
 ### Credit
 
