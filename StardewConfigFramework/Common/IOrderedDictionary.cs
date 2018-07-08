@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace StardewConfigFramework {
-	public interface ISCFOrderedDictionary<T>: IList<T>, IDictionary<string, T> where T : SCFObject {
+	public interface IOrderedDictionary<T>: IList<T>, IDictionary<string, T> where T : SCFObject {
 		int IndexOf(string identifier);
 		bool Contains(string identifier);
 		void Add(IList<T> items);
@@ -12,5 +12,5 @@ namespace StardewConfigFramework {
 		event OrderedDictionaryContentsDidChange<T> ContentsDidChange;
 	}
 
-	public delegate void OrderedDictionaryContentsDidChange<T>(ISCFOrderedDictionary<T> orderedDictionary) where T : SCFObject;
+	public delegate void OrderedDictionaryContentsDidChange<T>(IOrderedDictionary<T> orderedDictionary) where T : SCFObject;
 }

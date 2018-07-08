@@ -51,13 +51,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IConfigMenu.cs" />
     <Compile Include="OptionModels\ConfigOption.cs" />
-    <Compile Include="Common\SCFOrderedDictionary.cs" />
+    <Compile Include="Common\OrderedDictionary.cs" />
     <Compile Include="Common\SCFObject.cs" />
     <Compile Include="OptionPackages\IOptionsPackage.cs" />
     <Compile Include="OptionPackages\BaseOptionPackage.cs" />
     <Compile Include="OptionPackages\SimpleOptionsPackage.cs" />
     <Compile Include="OptionPackages\TabbedOptionsPackage.cs" />
-    <Compile Include="Common\ISCFOrderedDictionary.cs" />
+    <Compile Include="Common\IOrderedDictionary.cs" />
     <Compile Include="Common\SCFOrderedDictionaryEnumerator.cs" />
     <Compile Include="OptionModels\QuantizedRange.cs" />
     <Compile Include="OptionModels\Action\ConfigAction.cs" />

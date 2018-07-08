@@ -4,6 +4,6 @@ using StardewModdingAPI;
 namespace StardewConfigFramework {
 	public interface IOptionsPackage {
 		IManifest ModManifest { get; }
-		ISCFOrderedDictionary<IOptionsTab> Tabs { get; }
+		IOrderedDictionary<IOptionsTab> Tabs { get; }
 	}
 }

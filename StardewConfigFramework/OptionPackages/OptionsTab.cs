@@ -5,8 +5,8 @@ using StardewConfigFramework.Options;
 namespace StardewConfigFramework {
 	public class OptionsTab: IOptionsTab {
 
-		private ISCFOrderedDictionary<IConfigOption> _Options = new SCFOrderedDictionary<IConfigOption>();
-		public ISCFOrderedDictionary<IConfigOption> Options => _Options;
+		private IOrderedDictionary<IConfigOption> _Options = new OrderedDictionary<IConfigOption>();
+		public IOrderedDictionary<IConfigOption> Options => _Options;
 
 		private string _Label;
 
