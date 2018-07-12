@@ -1,2 +1,8 @@
 language: csharp
 solution: StardewConfigFramework.sln
+install:
+  - nuget restore StardewConfigFramework.sln
+  - nuget install NUnit.Console -Version 3.8.0 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release StardewConfigFramework.sln
+  - mono ./testrunner/NUnit.Console.3.8.0/tools/nunit-console.exe ./StardewConfigFrameworkTests/bin/Release/StardewConfigFrameworkTests.dll
