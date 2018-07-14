@@ -4,8 +4,8 @@ install:
   - nuget restore StardewConfigFramework.sln
   - nuget install NUnit.Console -Version 3.8.0 -OutputDirectory testrunner
 script:
-  - mkdir ~/smapi
-  - curl -L https://github.com/Pathoschild/SMAPI/releases/download/2.6-beta.20.1/SMAPI-2.6-beta.20.1-installer.zip -o ~/smapi/smapi.zip
-  - unzip ~/smapi/smapi.zip -d ~/smapi
-  - msbuild /p:Configuration=Release;ExplicitSMAPIPath='~/smapi/SMAPI 2.6-beta.20.1 installer/internal/Mono' StardewConfigFramework.sln
+  - mkdir $EXTRACT_PATH
+  - curl -L $SMAPI_DOWNLOAD_URL -o $EXTRACT_PATH/smapi.zip
+  - unzip $EXTRACT_PATH/smapi.zip -d $EXTRACT_PATH
+  - msbuild /p:Configuration=Release /p:ExplicitSMAPIPath=$SMAPI_FOLDER StardewConfigFramework.sln
   - mono ./testrunner/NUnit.Console.3.8.0/tools/nunit-console.exe ./StardewConfigFrameworkTests/bin/Release/StardewConfigFrameworkTests.dll
