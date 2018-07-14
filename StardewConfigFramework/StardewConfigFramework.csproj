@@ -46,8 +46,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="StardewModdingAPI.Toolkit.CoreInterfaces" Condition="'$(ExplicitSMAPIPath)' != ''">
-      <HintPath>$(ExplicitSMAPIPath)</HintPath>
+  </ItemGroup>
+  <ItemGroup Condition="'$(ExplicitSMAPIPath)' != ''">
+    <Reference Include="StardewModdingAPI">
+      <HintPath>$(ExplicitSMAPIPath)\StardewModdingAPI.exe</HintPath>
+    </Reference>
+    <Reference Include="StardewModdingAPI.Toolkit.CoreInterfaces">
+      <HintPath>$(ExplicitSMAPIPath)\StardewModdingAPI.Toolkit.CoreInterfaces.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +103,5 @@
     <Folder Include="OptionModels\String\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Pathoschild.Stardew.ModBuildConfig.1.6.0\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="'$(ExplicitSMAPIPath)' == '' AND Exists('..\packages\Pathoschild.Stardew.ModBuildConfig.1.6.0\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
   <Import Project="..\packages\Pathoschild.Stardew.ModBuildConfig.2.1.0-beta-20180630\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="'$(ExplicitSMAPIPath)' == '' AND Exists('..\packages\Pathoschild.Stardew.ModBuildConfig.2.1.0-beta-20180630\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
 </Project>
