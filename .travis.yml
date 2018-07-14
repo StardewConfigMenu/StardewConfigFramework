@@ -7,5 +7,5 @@ script:
   - mkdir ~/smapi
   - curl -L https://github.com/Pathoschild/SMAPI/releases/download/2.6-beta.20.1/SMAPI-2.6-beta.20.1-installer.zip -o ~/smapi/smapi.zip
   - unzip ~/smapi/smapi.zip -d ~/smapi
-  - msbuild /p:Configuration=Release;ExplicitSMAPIPath='~/smapi/SMAPI 2.6-beta.20.1 installer/internal/Mono/StardewModdingAPI.Toolkit.CoreInterfaces.dll' StardewConfigFramework.sln
+  - msbuild /p:Configuration=Release;ExplicitSMAPIPath='~/smapi/SMAPI 2.6-beta.20.1 installer/internal/Mono' StardewConfigFramework.sln
   - mono ./testrunner/NUnit.Console.3.8.0/tools/nunit-console.exe ./StardewConfigFrameworkTests/bin/Release/StardewConfigFrameworkTests.dll
