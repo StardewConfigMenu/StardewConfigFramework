@@ -7,5 +7,5 @@ script:
   - mkdir $EXTRACT_PATH
   - curl -L $SMAPI_DOWNLOAD_URL -o $EXTRACT_PATH/smapi.zip
   - unzip $EXTRACT_PATH/smapi.zip -d $EXTRACT_PATH
-  - msbuild /p:Configuration=Release /p:ExplicitSMAPIPath=$SMAPI_FOLDER StardewConfigFramework.sln
+  - msbuild /p:Configuration=Release /p:ExplicitSMAPIPath='$SMAPI_FOLDER' StardewConfigFramework.sln
   - mono ./testrunner/NUnit.Console.3.8.0/tools/nunit-console.exe ./StardewConfigFrameworkTests/bin/Release/StardewConfigFrameworkTests.dll
