@@ -35,6 +35,14 @@
       <HintPath>..\packages\NUnit.3.10.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup Condition="'$(ExplicitSMAPIPath)' != ''">
+    <Reference Include="StardewModdingAPI">
+      <HintPath>$(ExplicitSMAPIPath)\StardewModdingAPI.exe</HintPath>
+    </Reference>
+    <Reference Include="StardewModdingAPI.Toolkit.CoreInterfaces">
+      <HintPath>$(ExplicitSMAPIPath)\StardewModdingAPI.Toolkit.CoreInterfaces.dll</HintPath>
+    </Reference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -55,5 +63,5 @@
     <Compile Include="Stories\MenuStories.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Pathoschild.Stardew.ModBuildConfig.2.1.0-beta-20180630\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="Exists('..\packages\Pathoschild.Stardew.ModBuildConfig.2.1.0-beta-20180630\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
+  <Import Project="..\packages\Pathoschild.Stardew.ModBuildConfig.2.1.0-beta-20180630\build\Pathoschild.Stardew.ModBuildConfig.targets" Condition="'$(ExplicitSMAPIPath)' == '' AND Exists('..\packages\Pathoschild.Stardew.ModBuildConfig.2.1.0-beta-20180630\build\Pathoschild.Stardew.ModBuildConfig.targets')" />
 </Project>
