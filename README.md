@@ -1,5 +1,5 @@
 # StardewConfigFramework
-Ever want to add a settings menu to your Stardew Valley mod, but didn’t want to go through the hassle of building one from scratch? Well, you’re in luck! I did it for you!
+Ever want to add a settings menu to your Stardew Valley mod, but didn’t want to go through the hassle of building one from scratch? Using StardewConfigFramework your mod can have a fully functioning configuration menu in minutes.
 
 ## Contents
 
@@ -18,22 +18,7 @@ Ever want to add a settings menu to your Stardew Valley mod, but didn’t want t
 
 ### Pull Requests
 
-Feel free to submit pull requests. This is my first C# project so it is quite sloppy I'm sure.
-
-### Todo
-
- - [x] Centralized Saving
- - [x] Dropdown Component
- - [x] Checkbox Component
- - [x] Button Component
- - [x] Slider Component
- - [x] Plus/Minus Component
- - [ ] Text Input Component
- - [ ] Keybind Setting Component
- - [x] Unit Tests
- - [x] __CODE CLEANUP/ORGANIZATION__
- - [ ] Code documentation
- - [x] Complete Wiki
+Feel free to submit pull requests.
 
 ## Modders
 
@@ -45,7 +30,7 @@ For a walkthrough of how to use the framework in your mods [check out the Wiki](
 
 ### Mods
 
- - None yet! [But you can be the first!](#modders)
+ - Check the Requirements section on [Nexus](https://www.nexusmods.com/stardewvalley/mods/1312) for up to date list
 
 ## Users
 
