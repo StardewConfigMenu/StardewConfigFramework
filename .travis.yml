@@ -4,7 +4,6 @@ install:
   - nuget restore StardewConfigFramework.sln
   - nuget install NUnit.Console -Version 3.8.0 -OutputDirectory $EXTRACT_PATH/testrunner
 script:
-  - mkdir $EXTRACT_PATH
   - curl -L $SMAPI_DOWNLOAD_URL -o $EXTRACT_PATH/smapi.zip
   - unzip $EXTRACT_PATH/smapi.zip -d $EXTRACT_PATH
   - msbuild /p:Configuration=Release /p:ExplicitSMAPIPath="$SMAPI_FOLDER" StardewConfigFramework.sln
