@@ -1,5 +1,8 @@
 language: csharp
 solution: StardewConfigFramework.sln
+branches:
+  except:
+  - gh-pages
 install:
   - nuget restore StardewConfigFramework.sln
   - nuget install NUnit.Console -Version 3.8.0 -OutputDirectory $EXTRACT_PATH/testrunner
