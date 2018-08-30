@@ -1,4 +1,4 @@
-# StardewConfigFramework [![Build Status](https://travis-ci.com/StardewConfigMenu/StardewConfigFramework.svg?branch=develop)](https://travis-ci.com/StardewConfigMenu/StardewConfigFramework)
+# StardewConfigFramework		[![Build Status](https://travis-ci.com/StardewConfigMenu/StardewConfigFramework.svg?branch=develop)](https://travis-ci.com/StardewConfigMenu/StardewConfigFramework)
 Ever want to add a settings menu to your Stardew Valley mod, but didn’t want to go through the hassle of building one from scratch? Using StardewConfigFramework your mod can have a fully functioning configuration menu in minutes.
 
 ## Contents
