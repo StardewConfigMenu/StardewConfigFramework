@@ -10,7 +10,7 @@
     <iconUrl>https://github.com/StardewConfigMenu/StardewConfigMenu/blob/master/docs/buttonicons/ok.png?raw=true</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Completely refactored and cleaned up framework.</releaseNotes>
+    <releaseNotes>$PackageReleaseNotes$</releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>Stardew Valley Config Menu</tags>
   </metadata>
